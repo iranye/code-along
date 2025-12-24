@@ -1,8 +1,22 @@
 ﻿namespace HeadFirstDesignPatterns.Decorator
 {
+    public enum Size
+    {
+        Small,
+        Medium,
+        Large
+    }
+
     public abstract class Beverage
     {
         public string Description { get; protected set; } = "Unknown Beverage";
+
+        public virtual Size Size { get; protected set; } = Size.Medium;
+
+        public void SetSize(Size size)
+        {
+            Size = size;
+        }
 
         public virtual string GetDescription()
         {
@@ -19,7 +33,13 @@
         }
         public override double Cost()
         {
-            return 1.99;
+            return Size switch
+            {
+                Size.Small => 1.59,
+                Size.Medium => 1.99,
+                Size.Large => 2.20,
+                _ => 1.99
+            };
         }
     }
 
@@ -31,7 +51,13 @@
         }
         public override double Cost()
         {
-            return 0.89;
+            return Size switch
+            {
+                Size.Small => 0.69,
+                Size.Medium => 0.89,
+                Size.Large => 1.19,
+                _ => 0.89
+            };
         }
     }
 
@@ -43,7 +69,13 @@
         }
         public override double Cost()
         {
-            return 0.89;
+            return Size switch
+            {
+                Size.Small => 0.69,
+                Size.Medium => 0.89,
+                Size.Large => 1.19,
+                _ => 0.89
+            };
         }
     }
 }

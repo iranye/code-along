@@ -11,9 +11,17 @@ Overview
 - Concrete decorators (condiments): `Mocha`, `Whip`, `Soy`.
 
 Key files
-- `HeadFirstDesignPatterns/Decorator/Beverage.cs` — defines the abstract `Beverage` and the concrete beverages.
+- `HeadFirstDesignPatterns/Decorator/Beverage.cs` — defines the abstract `Beverage`, the `Size` enum and the concrete beverages.
 - `HeadFirstDesignPatterns/Decorator/CondimentDecorator.cs` — defines `CondimentDecorator` and the concrete condiment classes that wrap a `Beverage`.
 - `HeadFirstDesignPatterns/Program.cs` — example usage that composes beverages with decorators and prints description and cost.
+
+Size support
+- A `Size` enum (`Small`, `Medium`, `Large`) was added to `Beverage.cs`.
+- Each `Beverage` has a `Size` property (default `Medium`). The property currently has a `protected set`, so size is intended to be controlled by subclasses or internal initialization.
+- Price rules in the sample implementation:
+  - `Espresso`: Small = $1.59, Medium = $1.99, Large = $2.20
+  - `House Blend`: Small = $0.69, Medium = $0.89, Large = $1.19
+  - `Dark Roast`: Small = $0.69, Medium = $0.89, Large = $1.19
 
 How it works (brief)
 - Each `CondimentDecorator` holds a reference to a `Beverage` instance.
