@@ -1,0 +1,45 @@
+﻿<Window x:Class="CodeAlong.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:CodeAlong.WPF.Controls"        
+        xmlns:local="clr-namespace:CodeAlong.WPF"
+        mc:Ignorable="d"
+        Title="CodeAlong" Height="650" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <!-- * is the default -->
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Switch ViewModels -->
+        <StackPanel Orientation="Horizontal" >
+            <Button Width="200" FontSize="24" Command="{Binding SelectViewModelCommand}" Name="ButtonPatterns"
+                    CommandParameter="{Binding MediasViewModel}" Click="ButtonPatterns_Click">P_atterns</Button>
+            <Button Width="200" FontSize="24" Command="{Binding SelectViewModelCommand}" Name="ButtonTopics"
+                    CommandParameter="{Binding TopicsViewModel}" Click="ButtonTopics_Click">_Topics</Button>
+        </StackPanel>
+
+        <!-- Header -->
+        <controls:HeaderControl Grid.Row="1"/>
+
+        <ContentControl Grid.Row="2" Content="{Binding SelectedViewModel}"/>
+        <!--<ContentControl Grid.Row="2" Content="{Binding SelectedViewModel}">
+            <ContentControl.ContentTemplate>
+                <DataTemplate>
+                    <view:VolumesView/>
+                </DataTemplate>
+            </ContentControl.ContentTemplate>
+        </ContentControl>-->
+
+        <!-- Statusbar -->
+        <StatusBar Grid.Row="3">
+            <StatusBarItem FontSize="20" Content=" (c) IraNye 2026"/>
+        </StatusBar>
+
+    </Grid>
+</Window>
