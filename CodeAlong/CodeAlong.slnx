@@ -1,3 +1,5 @@
 <Solution>
+  <Project Path="CodeAlong.Domain/CodeAlong.Domain.csproj" />
   <Project Path="CodeAlong.WPF/CodeAlong.WPF.csproj" />
+  <Project Path="WpfLibrary/WpfLibrary.csproj" />
 </Solution>
