@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class Pattern
+    public class Reference
     {
         public int Id { get; set; }
 
@@ -11,6 +11,6 @@
         public string? Title { get; set; }
 
         [StringLength(5000)]
-        public string? Notes { get; set; }
+        public string? Description { get; set; }
     }
 }

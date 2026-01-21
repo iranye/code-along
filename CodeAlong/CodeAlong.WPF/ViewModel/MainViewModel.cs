@@ -6,7 +6,7 @@
     {
         private ViewModelBase? selectedViewModel;
 
-        public MainViewModel(PatternsViewModel patternsViewModel, TopicsViewModel topicsViewModel)
+        public MainViewModel(ReferenceViewModel patternsViewModel, TopicsViewModel topicsViewModel)
         {
             PatternsViewModel = patternsViewModel;
             TopicsViewModel = topicsViewModel;
@@ -16,7 +16,7 @@
 
         public DelegateCommand SelectViewModelCommand { get; }
 
-        public PatternsViewModel PatternsViewModel { get; }
+        public ReferenceViewModel PatternsViewModel { get; }
         public TopicsViewModel TopicsViewModel { get; }
 
         public ViewModelBase? SelectedViewModel

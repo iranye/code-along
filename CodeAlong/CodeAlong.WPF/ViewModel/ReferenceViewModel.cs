@@ -3,11 +3,11 @@
     using CodeAlong.Domain.Data;
     using WpfLibrary;
 
-    public class PatternsViewModel : ViewModelBase
+    public class ReferenceViewModel : ViewModelBase
     {
         private readonly IDataProvider dataProvider;
 
-        public PatternsViewModel(IDataProvider dataProvider)
+        public ReferenceViewModel(IDataProvider dataProvider)
         {
             this.dataProvider = dataProvider;
         }

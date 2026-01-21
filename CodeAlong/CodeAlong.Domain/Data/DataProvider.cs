@@ -4,19 +4,19 @@ namespace CodeAlong.Domain.Data
 {
     public interface IDataProvider
     {
-        Task<IEnumerable<Pattern>?> GetAllAsync();
+        Task<IEnumerable<Reference>?> GetAllAsync();
     }
 
     public class DataProvider : IDataProvider
     {
-        public async Task<IEnumerable<Pattern>?> GetAllAsync()
+        public async Task<IEnumerable<Reference>?> GetAllAsync()
         {
             // Simulate asynchronous data fetching
             await Task.Delay(100);
-            return new List<Pattern>
+            return new List<Reference>
             {
-                new Pattern { Id = 1, Title = "Pattern 1", Description = "Description 1" },
-                new Pattern { Id = 2, Title = "Pattern 2", Description = "Description 2" },
+                new Reference { Id = 1, Title = "HF Design Patterns", Description = "Design Patterns Book" },
+                new Reference { Id = 2, Title = "Just_Use_Postgres", Description = "Just_Use_Postgres Book" },
             };
         }
     }
