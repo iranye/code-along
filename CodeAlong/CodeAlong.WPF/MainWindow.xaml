@@ -8,7 +8,7 @@
         xmlns:viewmodel="clr-namespace:CodeAlong.WPF.ViewModel"
         xmlns:local="clr-namespace:CodeAlong.WPF"
         mc:Ignorable="d"
-        Title="CodeAlong" Height="650" Width="1000">
+        Title="CodeAlong" Height="900" Width="1200">
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewmodel:ReferencesViewModel}">
             <view:ReferencesView/>
@@ -29,7 +29,7 @@
         <!-- Switch ViewModels -->
         <StackPanel Orientation="Horizontal" >
             <Button Width="200" FontSize="24" Command="{Binding SelectViewModelCommand}" Name="ButtonReferences"
-                    CommandParameter="{Binding ReferencesViewModel}" Click="ButtonReferences_Click">P_atterns</Button>
+                    CommandParameter="{Binding ReferencesViewModel}" Click="ButtonReferences_Click">_References</Button>
             <Button Width="200" FontSize="24" Command="{Binding SelectViewModelCommand}" Name="ButtonTopics"
                     CommandParameter="{Binding TopicsViewModel}" Click="ButtonTopics_Click">_Topics</Button>
         </StackPanel>

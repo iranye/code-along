@@ -8,32 +8,15 @@
 
     public partial class ReferencesView : UserControl
     {
+        public ReferencesViewModel? ViewModel
+        {
+            get => DataContext as ReferencesViewModel;
+            set => DataContext = value;
+        }
+
         public ReferencesView()
         {
             InitializeComponent();
-            Loaded += ReferencesView_Loaded;
-        }
-
-        private void ReferencesView_Loaded(object sender, RoutedEventArgs e)
-        {
-            Keyboard.Focus(SearchInput);
-        }
-
-        ReferencesViewModel? ViewModel => DataContext as ReferencesViewModel;
-
-        void SearchInput_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                if (ViewModel != null)
-                {
-                    SearchInput.Text = SearchInput.Text.Trim();
-                    if (!String.IsNullOrWhiteSpace(SearchInput.Text))
-                    {
-                        ViewModel.FilterString = SearchInput.Text;
-                    }
-                }
-            }
         }
 
         void VolumeItem_KeyDown(object sender, KeyEventArgs e)
@@ -42,20 +25,6 @@
             {
                 // ViewModel?.SaveSelectedVolume();
                 e.Handled = true;
-            }
-        }
-
-        private void ClearFilter_Click(object sender, RoutedEventArgs e)
-        {
-            Keyboard.Focus(SearchInput);
-        }
-
-        private void AddNewItem_Click(object sender, RoutedEventArgs e)
-        {
-            if (Title is not null)
-            {
-                Keyboard.Focus(Title);
-                Title.SelectAll();
             }
         }
 
@@ -76,6 +45,15 @@
                     return;
 
                 }
+            }
+        }
+
+        private void AddNewItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (Title is not null)
+            {
+                Keyboard.Focus(Title);
+                Title.SelectAll();
             }
         }
     }

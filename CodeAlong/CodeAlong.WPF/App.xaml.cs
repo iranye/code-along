@@ -34,6 +34,8 @@
             services.AddTransient<ReferencesViewModel>();
             services.AddTransient<TopicsViewModel>();
 
+            services.AddTransient<SectionViewModel>();
+
             services.AddTransient<IDataProvider, DataProvider>();
             // services.AddAutoMapper(Assembly.GetExecutingAssembly());
         }

@@ -29,22 +29,6 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel>
-                <GroupBox Header="S_earch"  Margin="6,0" Padding="0">
-                    <StackPanel Height="50">
-                        <TextBox Text="{Binding FilterString}"
-                                 DockPanel.Dock="Left"
-                                 MinWidth="260"
-                                 Height="27"
-                                 HorizontalContentAlignment="Stretch"
-                                 Name="SearchInput"
-                                 KeyDown="SearchInput_KeyDown"
-                                 TextAlignment="Justify" />
-                        <StackPanel Margin="0 -2" Orientation="Horizontal" >
-                            <Button HorizontalAlignment="Left" Content="_Clear" Width="75" Margin="0 3 0 0" Click="ClearFilter_Click" Command="{Binding ClearFilterCommand}" />
-                            <Button HorizontalAlignment="Left" Content="_JSON" Width="75" Margin="0 3 0 0" Click="ViewJson_Click" ToolTip="Open JSON File" />
-                        </StackPanel>
-                    </StackPanel>
-                </GroupBox>
                 <StackPanel Orientation="Horizontal">
                     <Button Margin="10" Width="75" Command="{Binding AddCommand}" Click="AddNewItem_Click">
                         <StackPanel Orientation="Horizontal">
@@ -53,33 +37,31 @@
                         </StackPanel>
                     </Button>
                     <Button Content="Delete" Width="75" Margin="0 10 10 10"  Command="{Binding DeleteCommand}" />
+                    <Button HorizontalAlignment="Left" Content="_JSON" Width="75" Margin="0 10 10 10" Click="ViewJson_Click" ToolTip="Open JSON File" />
                 </StackPanel>
-            </StackPanel>
-            <ListView ItemsSource="{Binding Path=ListViewItems}"
+                <ComboBox ItemsSource="{Binding Path=ListViewItems}"
                       SelectedItem="{Binding SelectedItem,Mode=TwoWay}"
                       ItemTemplate="{StaticResource CustomerDataTemplate}"
                       Grid.Row="1" Margin="10 0 10 10">
-            </ListView>
-        </Grid>
-
-        <!-- item detail -->
-        <ScrollViewer Grid.Column="1" Margin="0 0 10 0" Visibility="{Binding IsItemSelected,Converter={StaticResource BooleanToVisibilityConv}}">
-            <StackPanel Margin="20 0">
-                <StackPanel Orientation="Horizontal" Margin="0 20 0 10">
-                    <Label Width="100">Title:</Label>
-                    <TextBox Width="500" Text="{Binding SelectedItem.Title, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Name="Title"/>
-                </StackPanel>
-                <StackPanel  HorizontalAlignment="Left">
-                    <StackPanel Orientation="Horizontal" Margin="0 10">
-                        <Label Width="100">Description:</Label>
-                        <TextBox Width="500" Text="{Binding SelectedItem.Description, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                </ComboBox>
+                
+                <!-- item detail -->
+                <GroupBox Header="Reference" Margin="10 0" Visibility="{Binding IsItemSelected,Converter={StaticResource BooleanToVisibilityConv}}">
+                    <StackPanel Margin="10 0">
+                        <StackPanel>
+                            <Label HorizontalAlignment="Left" Width="100">Title:</Label>
+                            <TextBox Width="500" Text="{Binding SelectedItem.Title, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Name="Title"/>
+                            <StackPanel Margin="0 10">
+                                <Label HorizontalAlignment="Left" Width="100">Description:</Label>
+                                <TextBox Width="500" Text="{Binding SelectedItem.Description, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel>
+                            <Button Content="Save" Width="75" Margin="0 10 10 10"  Command="{Binding SaveCommand}" />
+                        </StackPanel>
                     </StackPanel>
-
-                </StackPanel>
-                <StackPanel>
-                    <Button Content="Save" Width="75" Margin="0 10 10 10"  Command="{Binding SaveCommand}" />
-                </StackPanel>
+                </GroupBox>
             </StackPanel>
-        </ScrollViewer>
+        </Grid>
     </Grid>
 </UserControl>

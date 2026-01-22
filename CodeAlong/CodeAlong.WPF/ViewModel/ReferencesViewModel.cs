@@ -10,9 +10,34 @@
         private readonly IDataProvider dataProvider;
         private ReferenceItemViewModel? selectedItem;
 
-        public ReferencesViewModel(IDataProvider dataProvider)
+        public ReferencesViewModel(IDataProvider dataProvider, SectionViewModel sectionViewModel)
         {
             this.dataProvider = dataProvider;
+            SelectSectionCommand = new DelegateCommand(SelectSection);
+            SelectedSection = sectionViewModel;
+        }
+
+        public DelegateCommand SelectSectionCommand { get; }
+
+        private SectionViewModel? selectedSection;
+
+        public SectionViewModel? SelectedSection
+        {
+            get => selectedSection;
+            set
+            {
+                selectedSection = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private void SelectSection(object? parameter)
+        {
+            var selectedSection = (SectionViewModel)parameter;
+            if (selectedSection != null)
+            {
+                SelectedSection = selectedSection;
+            }
         }
 
         public ObservableCollection<ReferenceItemViewModel> ItemViewModels { get; } = new();
