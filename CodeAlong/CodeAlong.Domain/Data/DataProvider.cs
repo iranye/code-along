@@ -145,7 +145,11 @@ namespace CodeAlong.Domain.Data
             var jsonString = File.ReadAllText(jsonFilePath);
             if (!String.IsNullOrWhiteSpace(jsonString))
             {
-                System.Text.Json.JsonSerializer.Deserialize<IList<Reference>>(jsonString);
+                var col = System.Text.Json.JsonSerializer.Deserialize<IList<Reference>>(jsonString);
+                if (col != null)
+                {
+                    return col;
+                }
             }
             return defaultList;
         }

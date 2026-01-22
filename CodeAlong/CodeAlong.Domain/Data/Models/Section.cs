@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class Pattern
+    public class Section
     {
         public int Id { get; set; }
 

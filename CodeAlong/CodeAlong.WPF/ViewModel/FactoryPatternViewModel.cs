@@ -2,13 +2,14 @@
 {
     using WpfLibrary;
 
-    public class SectionViewModel : ViewModelBase
+    public class FactoryPatternViewModel : ViewModelBase
     {
-        public SectionViewModel()
+        public FactoryPatternViewModel()
         {
         }
 
-        private string title = "Decorator Pattern";
+        private string title = "Factor Pattern";
+
         public string? Title
         {
             get => title;

@@ -4,8 +4,6 @@
     using CodeAlong.Domain.Data.Models;
     using System;
     using System.Collections.ObjectModel;
-    using System.Runtime.Intrinsics.Arm;
-    using System.Security.Cryptography;
     using System.Windows;
     using WpfLibrary;
 
@@ -13,15 +11,28 @@
     {
         private readonly IDataProvider dataProvider;
         private ReferenceItemViewModel? selectedItem;
+        private ViewModelBase? _selectedViewModel;
 
-        public ReferencesViewModel(IDataProvider dataProvider, SectionViewModel sectionViewModel)
+        public ReferencesViewModel(IDataProvider dataProvider, DecoratorPatternViewModel decoratorViewModel, FactoryPatternViewModel factoryViewModel)
         {
             this.dataProvider = dataProvider;
-            SelectSectionCommand = new DelegateCommand(SelectSection);
-            SelectedSection = sectionViewModel;
+            SelectSectionCommand = new DelegateCommand(SelectViewModel);
+
+            DecoratorPattern = decoratorViewModel;
+            FactoryPattern = factoryViewModel;
             AddCommand = new DelegateCommand(Add);
             DeleteCommand = new DelegateCommand(Delete, CanDelete);
             SaveCommand = new DelegateCommand(Save);
+        }
+
+        public ViewModelBase? SelectedViewModel
+        {
+            get => _selectedViewModel;
+            set
+            {
+                _selectedViewModel = value;
+                RaisePropertyChanged();
+            }
         }
 
         public DelegateCommand SelectSectionCommand { get; }
@@ -32,26 +43,17 @@
 
         public DelegateCommand SaveCommand { get; set; }
 
-        private SectionViewModel? selectedSection;
+        public DecoratorPatternViewModel DecoratorPattern { get; }
 
-        public SectionViewModel? SelectedSection
+        public FactoryPatternViewModel FactoryPattern { get; }
+
+        private async void SelectViewModel(object? parameter)
         {
-            get => selectedSection;
-            set
-            {
-                selectedSection = value;
-                RaisePropertyChanged();
-            }
+            SelectedViewModel = parameter as ViewModelBase;
+            await LoadAsync();
         }
 
-        private void SelectSection(object? parameter)
-        {
-            var selectedSection = (SectionViewModel)parameter;
-            if (selectedSection != null)
-            {
-                SelectedSection = selectedSection;
-            }
-        }
+        public ObservableCollection<DecoratorPatternViewModel> SectionViewModels { get; } = new();
 
         public ObservableCollection<ReferenceItemViewModel> ItemViewModels { get; } = new();
 
