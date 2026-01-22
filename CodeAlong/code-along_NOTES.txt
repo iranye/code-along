@@ -3,3 +3,10 @@
 expand reference title, descr section to support Adding of Sections (List of SectionViewModel)
 consider factory pattern to resolve customizable section info, i.e., to support different UIs for different sections: Decorator, Singleton etc.
 
+Next Up:
+  Build out different Views for the different SelectedViewModels
+  Correlate SelectedViewModel (DecoratorPatternViewModel, FactoryPatternViewModel) with Reference
+  Add button or other "switch" control to switch between the different SelectedViewModels
+  
+  
+  

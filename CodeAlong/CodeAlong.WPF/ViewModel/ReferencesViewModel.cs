@@ -11,7 +11,7 @@
     {
         private readonly IDataProvider dataProvider;
         private ReferenceItemViewModel? selectedItem;
-        private ViewModelBase? _selectedViewModel;
+        private ViewModelBase? selectedViewModel;
 
         public ReferencesViewModel(IDataProvider dataProvider, DecoratorPatternViewModel decoratorViewModel, FactoryPatternViewModel factoryViewModel)
         {
@@ -20,6 +20,7 @@
 
             DecoratorPattern = decoratorViewModel;
             FactoryPattern = factoryViewModel;
+            SelectedViewModel = decoratorViewModel;
             AddCommand = new DelegateCommand(Add);
             DeleteCommand = new DelegateCommand(Delete, CanDelete);
             SaveCommand = new DelegateCommand(Save);
@@ -27,10 +28,10 @@
 
         public ViewModelBase? SelectedViewModel
         {
-            get => _selectedViewModel;
+            get => selectedViewModel;
             set
             {
-                _selectedViewModel = value;
+                selectedViewModel = value;
                 RaisePropertyChanged();
             }
         }

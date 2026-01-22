@@ -2,7 +2,9 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:view="clr-namespace:CodeAlong.WPF.View"
+             xmlns:viewmodel="clr-namespace:CodeAlong.WPF.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="1200">
     <UserControl.Resources>
@@ -10,6 +12,12 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="{Binding Title,ValidatesOnNotifyDataErrors=False}" FontWeight="Bold"/>
             </StackPanel>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodel:DecoratorPatternViewModel}">
+            <view:SectionView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodel:FactoryPatternViewModel}">
+            <view:SectionView/>
         </DataTemplate>
     </UserControl.Resources>
     <!-- Volume/Topic View -->
@@ -62,6 +70,12 @@
                     </StackPanel>
                 </GroupBox>
             </StackPanel>
+            <StackPanel>
+            </StackPanel>
         </Grid>
+        <!-- section detail -->
+        <ScrollViewer Grid.Column="1" Margin="0 0 10 0">
+            <ContentControl Grid.Row="2" Content="{Binding SelectedViewModel}"/>
+        </ScrollViewer>
     </Grid>
 </UserControl>
