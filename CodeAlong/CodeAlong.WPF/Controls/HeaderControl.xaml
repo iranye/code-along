@@ -8,11 +8,11 @@
     <!-- Header -->
     <Grid Background="{StaticResource HeaderBackgroundBrush}">
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-            <Image Source="/Images/logo.png" Width="50" Margin="10"/>
+            <Image Source="/Images/logo.png" Width="30" Margin="10"/>
             <TextBlock Text="Code Along" FontSize="30" 
                        Foreground="{StaticResource HeaderForegroundBrush}" VerticalAlignment="Center"/>
             <TextBlock Name="Version" Text="Version 1.0" FontSize="16"
-                       Foreground="#333333" VerticalAlignment="Bottom" Margin="10 0 0 18"/>
+                       Foreground="#333333" VerticalAlignment="Bottom" Margin="10 0 0 7"/>
         </StackPanel>
     </Grid>
 </UserControl>

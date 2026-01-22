@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using CodeAlong.WPF.ViewModel;
+using System.Windows;
 
 namespace CodeAlong.WPF
 {
@@ -7,6 +8,24 @@ namespace CodeAlong.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly MainViewModel viewModel;
+
+        public MainWindow(MainViewModel mainViewModel)
+        {
+            InitializeComponent();
+            viewModel = mainViewModel;
+            DataContext = viewModel;
+            Loaded += MainWindow_Loaded;
+        }
+
+        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            await viewModel.LoadAsync();
+
+            ButtonReferences.Style = StyleSelected;
+            ButtonTopics.Style = StyleUnSelected;
+        }
+
         private Style styleSelected;
         private Style styleUnSelected;
 
@@ -25,15 +44,15 @@ namespace CodeAlong.WPF
             InitializeComponent();
         }
 
-        private void ButtonPatterns_Click(object sender, RoutedEventArgs e)
+        private void ButtonReferences_Click(object sender, RoutedEventArgs e)
         {
-            ButtonPatterns.Style = StyleSelected;
+            ButtonReferences.Style = StyleSelected;
             ButtonTopics.Style = StyleUnSelected;
         }
 
         private void ButtonTopics_Click(object sender, RoutedEventArgs e)
         {
-            ButtonPatterns.Style = StyleUnSelected;
+            ButtonReferences.Style = StyleUnSelected;
             ButtonTopics.Style = StyleSelected;
         }
     }

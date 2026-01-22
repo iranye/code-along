@@ -45,5 +45,20 @@
                 RaisePropertyChanged();
             }
         }
+
+        public bool IsPlaceholder()
+        {
+            return Title == "New";
+        }
+
+        public bool HasFilterString(string filter)
+        {
+            bool ret = false;
+            if (Title != null && Title.ToLower().Contains(filter))
+            {
+                ret = true;
+            }
+            return ret;
+        }
     }
 }

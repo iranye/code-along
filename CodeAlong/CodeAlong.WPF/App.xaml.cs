@@ -31,7 +31,7 @@
             services.AddTransient<MainWindow>();
             services.AddTransient<MainViewModel>();
 
-            services.AddTransient<ReferenceViewModel>();
+            services.AddTransient<ReferencesViewModel>();
             services.AddTransient<TopicsViewModel>();
 
             services.AddTransient<IDataProvider, DataProvider>();
