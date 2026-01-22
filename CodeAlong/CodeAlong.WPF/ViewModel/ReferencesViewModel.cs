@@ -1,7 +1,11 @@
 ﻿namespace CodeAlong.WPF.ViewModel
 {
     using CodeAlong.Domain.Data;
+    using CodeAlong.Domain.Data.Models;
+    using System;
     using System.Collections.ObjectModel;
+    using System.Runtime.Intrinsics.Arm;
+    using System.Security.Cryptography;
     using System.Windows;
     using WpfLibrary;
 
@@ -15,9 +19,18 @@
             this.dataProvider = dataProvider;
             SelectSectionCommand = new DelegateCommand(SelectSection);
             SelectedSection = sectionViewModel;
+            AddCommand = new DelegateCommand(Add);
+            DeleteCommand = new DelegateCommand(Delete, CanDelete);
+            SaveCommand = new DelegateCommand(Save);
         }
 
         public DelegateCommand SelectSectionCommand { get; }
+
+        public DelegateCommand AddCommand { get; }
+
+        public DelegateCommand DeleteCommand { get; }
+
+        public DelegateCommand SaveCommand { get; set; }
 
         private SectionViewModel? selectedSection;
 
@@ -94,6 +107,68 @@
         }
 
         public bool IsItemSelected => SelectedItem is not null;
+
+        private void Add(object? parameter)
+        {
+            var reference = new Reference { Title = "New" };
+            var viewModel = new ReferenceItemViewModel(reference);
+            ItemViewModels.Add(viewModel);
+            ListViewItems.Add(viewModel);
+            SelectedItem = viewModel;
+        }
+
+        internal bool BeQuiet { get; set; } = false;
+        private void Save(object? parameter)
+        {
+            if (SelectedItem is null)
+            {
+                MessageBox.Show("Nothing Selected!");
+                return;
+            }
+            if (SelectedItem.IsPlaceholder())
+            {
+                MessageBox.Show("Cannot save a Placeholder Item!");
+                return;
+            }
+
+            SaveItem(SelectedItem);
+            if (!BeQuiet)
+            {
+                MessageBox.Show("Saved!");
+            }
+        }
+
+        private void SaveItem(ReferenceItemViewModel itemViewModel)
+        {
+            var item = itemViewModel.ReferenceModel;
+            dataProvider.Save(item);
+
+            if (item is not null)
+            {
+                SelectedItem.Id = item.Id;
+            }
+        }
+
+        private void Delete(object? parameter)
+        {
+            if (SelectedItem is not null)
+            {
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure?", "Delete Confirmation", System.Windows.MessageBoxButton.YesNo);
+                if (messageBoxResult == MessageBoxResult.Yes)
+                {
+                    var toBeDeletedId = SelectedItem.Id;
+                    ItemViewModels.Remove(SelectedItem);
+                    ListViewItems.Remove(SelectedItem);
+                    if (toBeDeletedId > 0)
+                    {
+                        dataProvider.Delete(toBeDeletedId);
+                    }
+                    SelectedItem = null;
+                }
+            }
+        }
+
+        private bool CanDelete(object? parameter) => IsItemSelected;
 
         private string _filterString = String.Empty;
 

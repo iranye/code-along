@@ -36,6 +36,11 @@
             }
         }
 
+        public Reference ReferenceModel
+        {
+            get => model;
+        }
+
         public string Description
         {
             get => model.Description;
