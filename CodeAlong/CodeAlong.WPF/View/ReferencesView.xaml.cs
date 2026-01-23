@@ -19,7 +19,7 @@
             InitializeComponent();
         }
 
-        void VolumeItem_KeyDown(object sender, KeyEventArgs e)
+        void MainItem_KeyDown(object sender, KeyEventArgs e)
         {
             if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.S)
             {
@@ -47,6 +47,26 @@
                 }
             }
         }
+
+        private void ButtonDecorator_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: Update button styling to reflect selected/not selected state
+            //if (Title is not null)
+            //{
+            //    Keyboard.Focus(Title);
+            //    Title.SelectAll();
+            //}
+        }
+
+        private void ButtonFactoryPattern_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: Update button styling to reflect selected/not selected state
+            //if (Title is not null)
+            //{
+            //    Keyboard.Focus(Title);
+            //    Title.SelectAll();
+            //}
+        }        
 
         private void AddNewItem_Click(object sender, RoutedEventArgs e)
         {

@@ -4,9 +4,14 @@ expand reference title, descr section to support Adding of Sections (List of Sec
 consider factory pattern to resolve customizable section info, i.e., to support different UIs for different sections: Decorator, Singleton etc.
 
 Next Up:
-  Build out different Views for the different SelectedViewModels
-  Correlate SelectedViewModel (DecoratorPatternViewModel, FactoryPatternViewModel) with Reference
-  Add button or other "switch" control to switch between the different SelectedViewModels
+  Build out different Views for the different References (i.e., each book gets its own View + ViewModel) where each can be accessed via its own tab.
+  Then within each Reference-level ViewModel (e.g., Head First DP), support one or more Section-specific ViewModels (e.g., DecoratorViewModel, FactoryPatternViewModel) where each can be accessed via its own tab/button.
+  Refactors/Renames:
+    Consider including a Template Tab with generic controls and use when adding new References/Books
+    ReferencesView/ReferencesViewModel => HeadFirstView/HeadFirst_ReferenceViewModel
+  Write a prompt to add a new section (which generates a new View + ViewModel, e.g., for Singleton pattern)
+  Correlate ViewModel.Sections (e.g., DecoratorViewModel, FactoryPatternViewModel) with ReferenceItemViewModelItem (e.g., Head First DP)
+
   
   
   

@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:view="clr-namespace:CodeAlong.WPF.View"
-             xmlns:viewmodel="clr-namespace:CodeAlong.WPF.ViewModel"
+             xmlns:viewsections="clr-namespace:CodeAlong.WPF.View.Sections"
+             xmlns:vmsections="clr-namespace:CodeAlong.WPF.ViewModel.Sections"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="1200">
     <UserControl.Resources>
@@ -13,15 +13,15 @@
                 <TextBlock Text="{Binding Title,ValidatesOnNotifyDataErrors=False}" FontWeight="Bold"/>
             </StackPanel>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodel:DecoratorPatternViewModel}">
-            <view:SectionView/>
+        <DataTemplate DataType="{x:Type vmsections:DecoratorViewModel}">
+            <viewsections:DecoratorView/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodel:FactoryPatternViewModel}">
-            <view:SectionView/>
+        <DataTemplate DataType="{x:Type vmsections:FactoryPatternViewModel}">
+            <viewsections:FactoryPatternView/>
         </DataTemplate>
     </UserControl.Resources>
     <!-- Volume/Topic View -->
-    <Grid KeyDown="VolumeItem_KeyDown">
+    <Grid KeyDown="MainItem_KeyDown">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>
@@ -35,10 +35,13 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Button Margin="10" Width="75" Command="{Binding AddCommand}" Click="AddNewItem_Click">
+                    <Button Margin="10" Width="75"
+                            Command="{Binding AddCommand}"
+                            Click="AddNewItem_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/add.png" Height="18" Margin="0 0 5 0"/>
                             <TextBlock Text="Add"/>
@@ -70,12 +73,22 @@
                     </StackPanel>
                 </GroupBox>
             </StackPanel>
-            <StackPanel>
-            </StackPanel>
+            <GroupBox Grid.Row="1"
+                      Margin="10"
+                      Header="Sections"
+                      HorizontalAlignment="Left"
+                      Visibility="{Binding IsItemSelected,Converter={StaticResource BooleanToVisibilityConv}}">
+                <StackPanel Margin="10">
+                    <Button Width="200" FontSize="24" Command="{Binding SelectSectionCommand}" Name="ButtonDecorator"
+                    CommandParameter="{Binding DecoratorPattern}" Click="ButtonDecorator_Click">_Decorator Pattern</Button>
+                    <Button Width="200" FontSize="24" Command="{Binding SelectSectionCommand}" Name="ButtonFactoryPattern"
+                    CommandParameter="{Binding FactoryPattern}" Click="ButtonFactoryPattern_Click">_Factory Pattern</Button>
+                </StackPanel>
+            </GroupBox>
         </Grid>
         <!-- section detail -->
-        <ScrollViewer Grid.Column="1" Margin="0 0 10 0">
-            <ContentControl Grid.Row="2" Content="{Binding SelectedViewModel}"/>
+        <ScrollViewer Grid.Row="1" Grid.Column="1" Margin="0 0 10 0">
+            <ContentControl Content="{Binding SelectedViewModel}"/>
         </ScrollViewer>
     </Grid>
 </UserControl>

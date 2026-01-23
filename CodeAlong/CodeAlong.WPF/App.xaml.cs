@@ -2,6 +2,7 @@
 {
     using CodeAlong.Domain.Data;
     using CodeAlong.WPF.ViewModel;
+    using CodeAlong.WPF.ViewModel.Sections;
     using Microsoft.Extensions.DependencyInjection;
     using System.Windows;
 
@@ -34,7 +35,7 @@
             services.AddTransient<ReferencesViewModel>();
             services.AddTransient<TopicsViewModel>();
 
-            services.AddTransient<DecoratorPatternViewModel>();
+            services.AddTransient<DecoratorViewModel>();
             services.AddTransient<FactoryPatternViewModel>();
 
             services.AddTransient<IDataProvider, DataProvider>();

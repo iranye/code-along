@@ -29,7 +29,7 @@
         <!-- Switch ViewModels -->
         <StackPanel Orientation="Horizontal" >
             <Button Width="200" FontSize="24" Command="{Binding SelectViewModelCommand}" Name="ButtonReferences"
-                    CommandParameter="{Binding ReferencesViewModel}" Click="ButtonReferences_Click">_References</Button>
+                    CommandParameter="{Binding ReferencesViewModel}" Click="ButtonReferences_Click">_HeadFirst DP</Button>
             <Button Width="200" FontSize="24" Command="{Binding SelectViewModelCommand}" Name="ButtonTopics"
                     CommandParameter="{Binding TopicsViewModel}" Click="ButtonTopics_Click">_Topics</Button>
         </StackPanel>

@@ -2,6 +2,7 @@
 {
     using CodeAlong.Domain.Data;
     using CodeAlong.Domain.Data.Models;
+    using CodeAlong.WPF.ViewModel.Sections;
     using System;
     using System.Collections.ObjectModel;
     using System.Windows;
@@ -13,7 +14,7 @@
         private ReferenceItemViewModel? selectedItem;
         private ViewModelBase? selectedViewModel;
 
-        public ReferencesViewModel(IDataProvider dataProvider, DecoratorPatternViewModel decoratorViewModel, FactoryPatternViewModel factoryViewModel)
+        public ReferencesViewModel(IDataProvider dataProvider, DecoratorViewModel decoratorViewModel, FactoryPatternViewModel factoryViewModel)
         {
             this.dataProvider = dataProvider;
             SelectSectionCommand = new DelegateCommand(SelectViewModel);
@@ -44,7 +45,7 @@
 
         public DelegateCommand SaveCommand { get; set; }
 
-        public DecoratorPatternViewModel DecoratorPattern { get; }
+        public DecoratorViewModel DecoratorPattern { get; }
 
         public FactoryPatternViewModel FactoryPattern { get; }
 
@@ -54,7 +55,7 @@
             await LoadAsync();
         }
 
-        public ObservableCollection<DecoratorPatternViewModel> SectionViewModels { get; } = new();
+        public ObservableCollection<DecoratorViewModel> SectionViewModels { get; } = new();
 
         public ObservableCollection<ReferenceItemViewModel> ItemViewModels { get; } = new();
 

@@ -1,14 +1,10 @@
-﻿namespace CodeAlong.WPF.ViewModel
+﻿namespace CodeAlong.WPF.ViewModel.Sections
 {
     using WpfLibrary;
 
-    public class FactoryPatternViewModel : ViewModelBase
+    public class DecoratorViewModel : ViewModelBase
     {
-        public FactoryPatternViewModel()
-        {
-        }
-
-        private string title = "Factor Pattern";
+        private string title = "Decorator Pattern";
 
         public string? Title
         {
