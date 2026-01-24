@@ -35,9 +35,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
-                <RowDefinition/>
             </Grid.RowDefinitions>
-            <StackPanel>
+            <StackPanel Visibility="Collapsed">
                 <StackPanel Orientation="Horizontal">
                     <Button Margin="10" Width="75"
                             Command="{Binding AddCommand}"
@@ -76,12 +75,12 @@
             <GroupBox Grid.Row="1"
                       Margin="10"
                       Header="Sections"
-                      HorizontalAlignment="Left"
-                      Visibility="{Binding IsItemSelected,Converter={StaticResource BooleanToVisibilityConv}}">
+                      VerticalAlignment="Stretch"
+                      HorizontalAlignment="Stretch">
                 <StackPanel Margin="10">
                     <Button Width="200" FontSize="24" Command="{Binding SelectSectionCommand}" Name="ButtonDecorator"
                     CommandParameter="{Binding DecoratorPattern}" Click="ButtonDecorator_Click">_Decorator Pattern</Button>
-                    <Button Width="200" FontSize="24" Command="{Binding SelectSectionCommand}" Name="ButtonFactoryPattern"
+                    <Button Margin="0 10" Width="200" FontSize="24" Command="{Binding SelectSectionCommand}" Name="ButtonFactoryPattern"
                     CommandParameter="{Binding FactoryPattern}" Click="ButtonFactoryPattern_Click">_Factory Pattern</Button>
                 </StackPanel>
             </GroupBox>
