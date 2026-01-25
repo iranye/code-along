@@ -22,6 +22,8 @@
             return beverage.GetDescription() + ", Mocha";
         }
 
+        public new string Description => GetDescription();
+
         public override double Cost()
         {
             return 0.20 + beverage.Cost();
@@ -35,10 +37,14 @@
         {
             this.beverage = beverage;
         }
+
         public override string GetDescription()
         {
             return beverage.GetDescription() + ", Whip";
         }
+
+        public new string Description => GetDescription();
+
         public override double Cost()
         {
             return 0.10 + beverage.Cost();
@@ -52,10 +58,14 @@
         {
             this.beverage = beverage;
         }
+
         public override string GetDescription()
         {
             return beverage.GetDescription() + ", Soy";
         }
+
+        public new string Description => GetDescription();
+
         public override double Cost()
         {
             return 0.15 + beverage.Cost();

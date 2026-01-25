@@ -20,7 +20,7 @@
             <viewsections:FactoryPatternView/>
         </DataTemplate>
     </UserControl.Resources>
-    <!-- Volume/Topic View -->
+    
     <Grid KeyDown="MainItem_KeyDown">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -28,9 +28,8 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Items list -->
         <Grid Grid.Column="0"
-              Width="400"
+              Width="260"
               Background="#AAA">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>

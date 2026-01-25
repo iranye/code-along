@@ -20,7 +20,15 @@
                     <StackPanel Orientation="Horizontal" Margin="5">
                         <ComboBox Width="150" ItemsSource="{Binding BeverageTypes}" SelectedItem="{Binding SelectedBeverageType}" DisplayMemberPath="Key"/>
                         <ComboBox Width="100" Margin="10,0,0,0" ItemsSource="{Binding Sizes}" SelectedItem="{Binding SelectedSize}"/>
-                        <Button Content="Add Beverage" Margin="10,0,0,0" Command="{Binding AddCommand}"/>
+                        <Button Margin="10 0"
+                                Height="25"
+                                Width="80"
+                                Command="{Binding AddCommand}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Images/add.png" Height="18" Margin="0 0 5 0"/>
+                                <TextBlock Text="Add"/>
+                            </StackPanel>
+                        </Button>                        
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5">
                         <StackPanel>
