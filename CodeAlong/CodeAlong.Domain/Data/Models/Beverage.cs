@@ -10,7 +10,7 @@
     // pdf page 135/97
     public abstract class Beverage
     {
-        public string Description { get; protected set; } = "Unknown Beverage";
+        public virtual string Description { get; protected set; } = "Unknown Beverage";
 
         public virtual Size Size { get; protected set; } = Size.Medium;
 
@@ -19,10 +19,7 @@
             Size = size;
         }
 
-        public virtual string GetDescription()
-        {
-            return Description;
-        }
+        public virtual string GetInfo => $"{Size} {Description} - {Cost():C2}";
 
         public abstract double Cost();
     }
@@ -33,14 +30,15 @@
         {
             Description = "Espresso";
         }
+
         public override double Cost()
         {
             return Size switch
             {
-                Size.Small => 1.59,
-                Size.Medium => 1.99,
-                Size.Large => 2.20,
-                _ => 1.99
+                Size.Small => 2.00,
+                Size.Medium => 3.00,
+                Size.Large => 4.00,
+                _ => 3.00
             };
         }
     }
@@ -51,14 +49,15 @@
         {
             Description = "House Blend";
         }
+
         public override double Cost()
         {
             return Size switch
             {
-                Size.Small => 0.69,
-                Size.Medium => 0.89,
-                Size.Large => 1.19,
-                _ => 0.89
+                Size.Small => 1.00,
+                Size.Medium => 2.00,
+                Size.Large => 3.00,
+                _ => 2.00
             };
         }
     }
@@ -69,14 +68,15 @@
         {
             Description = "Dark Roast";
         }
+
         public override double Cost()
         {
             return Size switch
             {
-                Size.Small => 0.69,
-                Size.Medium => 0.89,
-                Size.Large => 1.19,
-                _ => 0.89
+                Size.Small => 1.00,
+                Size.Medium => 2.00,
+                Size.Large => 3.00,
+                _ => 2.00
             };
         }
     }
