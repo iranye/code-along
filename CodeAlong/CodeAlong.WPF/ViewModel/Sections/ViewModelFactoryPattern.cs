@@ -8,7 +8,7 @@
         {
         }
 
-        private string title = "Factory Pattern";
+        private string title = "Factory Pattern - SEE page 160/122";
 
         public string? Title
         {
