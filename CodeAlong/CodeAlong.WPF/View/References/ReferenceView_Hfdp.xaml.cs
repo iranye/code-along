@@ -1,4 +1,4 @@
-﻿namespace CodeAlong.WPF.View
+﻿namespace CodeAlong.WPF.View.References
 {
     using CodeAlong.WPF.ViewModel;
     using System.Diagnostics;
@@ -6,7 +6,7 @@
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    public partial class ReferencesView : UserControl
+    public partial class ReferenceView_Hfdp : UserControl
     {
         public ReferencesViewModel? ViewModel
         {
@@ -14,7 +14,7 @@
             set => DataContext = value;
         }
 
-        public ReferencesView()
+        public ReferenceView_Hfdp()
         {
             InitializeComponent();
         }

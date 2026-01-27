@@ -5,13 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:CodeAlong.WPF.Controls"
         xmlns:view="clr-namespace:CodeAlong.WPF.View"
+        xmlns:viewref="clr-namespace:CodeAlong.WPF.View.References"
         xmlns:viewmodel="clr-namespace:CodeAlong.WPF.ViewModel"
         xmlns:local="clr-namespace:CodeAlong.WPF"
         mc:Ignorable="d"
+        Icon="./codealong.ico"
         Title="CodeAlong" Height="900" Width="1200">
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewmodel:ReferencesViewModel}">
-            <view:ReferencesView/>
+            <viewref:ReferenceView_Hfdp/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewmodel:TopicsViewModel}">
             <view:TopicsView/>
