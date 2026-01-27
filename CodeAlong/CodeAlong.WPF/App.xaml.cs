@@ -35,8 +35,8 @@
             services.AddTransient<ReferencesViewModel>();
             services.AddTransient<TopicsViewModel>();
 
-            services.AddTransient<DecoratorViewModel>();
-            services.AddTransient<FactoryPatternViewModel>();
+            services.AddTransient<ViewModelDecorator>();
+            services.AddTransient<ViewModelFactoryPattern>();
 
             services.AddTransient<IDataProvider, DataProvider>();
             // services.AddAutoMapper(Assembly.GetExecutingAssembly());

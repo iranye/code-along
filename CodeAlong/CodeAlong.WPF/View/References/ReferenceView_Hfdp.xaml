@@ -13,10 +13,10 @@
                 <TextBlock Text="{Binding Title,ValidatesOnNotifyDataErrors=False}" FontWeight="Bold"/>
             </StackPanel>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type vmsections:DecoratorViewModel}">
+        <DataTemplate DataType="{x:Type vmsections:ViewModelDecorator}">
             <viewsections:DecoratorView/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type vmsections:FactoryPatternViewModel}">
+        <DataTemplate DataType="{x:Type vmsections:ViewModelFactoryPattern}">
             <viewsections:FactoryPatternView/>
         </DataTemplate>
     </UserControl.Resources>

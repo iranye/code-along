@@ -2,9 +2,9 @@
 {
     using WpfLibrary;
 
-    public class FactoryPatternViewModel : ViewModelBase
+    public class ViewModelFactoryPattern : ViewModelBase
     {
-        public FactoryPatternViewModel()
+        public ViewModelFactoryPattern()
         {
         }
 

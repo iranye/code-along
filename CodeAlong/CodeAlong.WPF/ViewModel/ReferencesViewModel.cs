@@ -14,7 +14,7 @@
         private ReferenceItemViewModel? selectedItem;
         private ViewModelBase? selectedViewModel;
 
-        public ReferencesViewModel(IDataProvider dataProvider, DecoratorViewModel decoratorViewModel, FactoryPatternViewModel factoryViewModel)
+        public ReferencesViewModel(IDataProvider dataProvider, ViewModelDecorator decoratorViewModel, ViewModelFactoryPattern factoryViewModel)
         {
             this.dataProvider = dataProvider;
             SelectSectionCommand = new DelegateCommand(SelectViewModel);
@@ -45,9 +45,9 @@
 
         public DelegateCommand SaveCommand { get; set; }
 
-        public DecoratorViewModel DecoratorPattern { get; }
+        public ViewModelDecorator DecoratorPattern { get; }
 
-        public FactoryPatternViewModel FactoryPattern { get; }
+        public ViewModelFactoryPattern FactoryPattern { get; }
 
         private async void SelectViewModel(object? parameter)
         {
@@ -55,7 +55,7 @@
             await LoadAsync();
         }
 
-        public ObservableCollection<DecoratorViewModel> SectionViewModels { get; } = new();
+        public ObservableCollection<ViewModelDecorator> SectionViewModels { get; } = new();
 
         public ObservableCollection<ReferenceItemViewModel> ItemViewModels { get; } = new();
 

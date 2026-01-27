@@ -3,9 +3,9 @@
     using CodeAlong.Domain.Data.Models;
     using WpfLibrary;
 
-    public class DecoratorViewModel : ViewModelBase
+    public class ViewModelDecorator : ViewModelBase
     {
-        public DecoratorViewModel()
+        public ViewModelDecorator()
         {
             CoffeeOrder = new CoffeeOrder();
             ClearOrderCommand = new DelegateCommand(ClearOrder);
@@ -70,7 +70,6 @@
         {
             // create base beverage
             var beverage = SelectedBeverageType.Value();
-            beverage.SetSize(SelectedSize);
 
             // apply condiments as decorators
             if (CondimentMocha)
@@ -86,6 +85,7 @@
                 beverage = new Soy(beverage);
             }
 
+            beverage.SetSize(SelectedSize);
             CoffeeOrder.Beverages.Add(beverage);
             RaisePropertyChanged(nameof(CoffeeOrder));
         }
