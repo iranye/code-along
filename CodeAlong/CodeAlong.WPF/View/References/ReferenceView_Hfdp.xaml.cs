@@ -1,6 +1,6 @@
 ﻿namespace CodeAlong.WPF.View.References
 {
-    using CodeAlong.WPF.ViewModel;
+    using CodeAlong.WPF.ViewModel.References;
     using System.Diagnostics;
     using System.Windows;
     using System.Windows.Controls;
@@ -8,9 +8,9 @@
 
     public partial class ReferenceView_Hfdp : UserControl
     {
-        public ReferencesViewModel? ViewModel
+        public ViewModelHfdp? ViewModel
         {
-            get => DataContext as ReferencesViewModel;
+            get => DataContext as ViewModelHfdp;
             set => DataContext = value;
         }
 

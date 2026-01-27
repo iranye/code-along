@@ -1,4 +1,4 @@
-﻿namespace CodeAlong.WPF.ViewModel
+﻿namespace CodeAlong.WPF.ViewModel.References
 {
     using CodeAlong.Domain.Data;
     using CodeAlong.Domain.Data.Models;
@@ -8,13 +8,13 @@
     using System.Windows;
     using WpfLibrary;
 
-    public class ReferencesViewModel : ViewModelBase
+    public class ViewModelHfdp : ViewModelBase
     {
         private readonly IDataProvider dataProvider;
         private ReferenceItemViewModel? selectedItem;
         private ViewModelBase? selectedViewModel;
 
-        public ReferencesViewModel(IDataProvider dataProvider, ViewModelDecorator decoratorViewModel, ViewModelFactoryPattern factoryViewModel)
+        public ViewModelHfdp(IDataProvider dataProvider, ViewModelDecorator decoratorViewModel, ViewModelFactoryPattern factoryViewModel)
         {
             this.dataProvider = dataProvider;
             SelectSectionCommand = new DelegateCommand(SelectViewModel);

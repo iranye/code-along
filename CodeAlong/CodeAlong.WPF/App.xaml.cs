@@ -2,6 +2,7 @@
 {
     using CodeAlong.Domain.Data;
     using CodeAlong.WPF.ViewModel;
+    using CodeAlong.WPF.ViewModel.References;
     using CodeAlong.WPF.ViewModel.Sections;
     using Microsoft.Extensions.DependencyInjection;
     using System.Windows;
@@ -32,7 +33,7 @@
             services.AddTransient<MainWindow>();
             services.AddTransient<MainViewModel>();
 
-            services.AddTransient<ReferencesViewModel>();
+            services.AddTransient<ViewModelHfdp>();
             services.AddTransient<TopicsViewModel>();
 
             services.AddTransient<ViewModelDecorator>();
