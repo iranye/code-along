@@ -14,14 +14,18 @@
         private ReferenceItemViewModel? selectedItem;
         private ViewModelBase? selectedViewModel;
 
-        public ViewModelHfdp(IDataProvider dataProvider, ViewModelDecorator decoratorViewModel, ViewModelFactoryPattern factoryViewModel)
+        public ViewModelHfdp(IDataProvider dataProvider,
+            ViewModelDecorator viewModelDecorator,
+            ViewModelFactoryPattern factoryViewModel,
+            ViewModelStrategyPattern strategyViewModel)
         {
             this.dataProvider = dataProvider;
             SelectSectionCommand = new DelegateCommand(SelectViewModel);
 
-            DecoratorPattern = decoratorViewModel;
+            StrategyPattern = strategyViewModel;
+            DecoratorPattern = viewModelDecorator;
             FactoryPattern = factoryViewModel;
-            SelectedViewModel = decoratorViewModel;
+            SelectedViewModel = viewModelDecorator;
             AddCommand = new DelegateCommand(Add);
             DeleteCommand = new DelegateCommand(Delete, CanDelete);
             SaveCommand = new DelegateCommand(Save);
@@ -44,6 +48,8 @@
         public DelegateCommand DeleteCommand { get; }
 
         public DelegateCommand SaveCommand { get; set; }
+
+        public ViewModelStrategyPattern StrategyPattern { get; }
 
         public ViewModelDecorator DecoratorPattern { get; }
 

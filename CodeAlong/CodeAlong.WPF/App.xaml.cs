@@ -36,6 +36,7 @@
             services.AddTransient<ViewModelHfdp>();
             services.AddTransient<TopicsViewModel>();
 
+            services.AddTransient<ViewModelStrategyPattern>();
             services.AddTransient<ViewModelDecorator>();
             services.AddTransient<ViewModelFactoryPattern>();
 

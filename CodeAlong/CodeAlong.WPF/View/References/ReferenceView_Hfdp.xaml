@@ -13,6 +13,9 @@
                 <TextBlock Text="{Binding Title,ValidatesOnNotifyDataErrors=False}" FontWeight="Bold"/>
             </StackPanel>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vmsections:ViewModelStrategyPattern}">
+            <viewsections:StrategyPatternView/>
+        </DataTemplate>
         <DataTemplate DataType="{x:Type vmsections:ViewModelDecorator}">
             <viewsections:DecoratorView/>
         </DataTemplate>
@@ -77,9 +80,11 @@
                       VerticalAlignment="Stretch"
                       HorizontalAlignment="Stretch">
                 <StackPanel Margin="10">
-                    <Button Width="210" FontSize="20" HorizontalContentAlignment="Left" Padding="10,0,0,0" Command="{Binding SelectSectionCommand}" Name="ButtonDecorator"
+                    <Button Width="210" FontSize="20" HorizontalContentAlignment="Left" Padding="10,0,0,0" Command="{Binding SelectSectionCommand}"
+                    CommandParameter="{Binding StrategyPattern}">1. _Strategy Pattern</Button>
+                    <Button Width="210" Margin="0 10 0 0" FontSize="20" HorizontalContentAlignment="Left" Padding="10,0,0,0" Command="{Binding SelectSectionCommand}" Name="ButtonDecorator"
                     CommandParameter="{Binding DecoratorPattern}">3. _Decorator Pattern</Button>
-                    <Button Width="210" Margin="0 10" FontSize="20" HorizontalContentAlignment="Left" Padding="10,0,0,0" Command="{Binding SelectSectionCommand}" Name="ButtonFactoryPattern"
+                    <Button Width="210" Margin="0 10 0 0" FontSize="20" HorizontalContentAlignment="Left" Padding="10,0,0,0" Command="{Binding SelectSectionCommand}" Name="ButtonFactoryPattern"
                     CommandParameter="{Binding FactoryPattern}">4. _Factory Pattern</Button>
                 </StackPanel>
             </GroupBox>

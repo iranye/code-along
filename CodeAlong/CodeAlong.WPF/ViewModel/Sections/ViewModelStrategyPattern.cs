@@ -4,7 +4,7 @@
 
     public class ViewModelStrategyPattern : ViewModelBase
     {
-        private string title = "Strategy Pattern - SEE page 160/122";
+        private string title = "Strategy Pattern - SEE page 16/54";
 
         public string Title
         {
