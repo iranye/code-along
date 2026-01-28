@@ -98,7 +98,7 @@
 
         private string title = "Decorator Pattern - SEE page 135/97";
 
-        public string? Title
+        public string Title
         {
             get => title;
             set

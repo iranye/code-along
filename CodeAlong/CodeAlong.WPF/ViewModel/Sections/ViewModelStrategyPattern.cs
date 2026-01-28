@@ -2,13 +2,9 @@
 {
     using WpfLibrary;
 
-    public class ViewModelFactoryPattern : ViewModelBase
+    public class ViewModelStrategyPattern : ViewModelBase
     {
-        public ViewModelFactoryPattern()
-        {
-        }
-
-        private string title = "Factory Pattern - SEE page 160/122";
+        private string title = "Strategy Pattern - SEE page 160/122";
 
         public string Title
         {

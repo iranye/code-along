@@ -144,6 +144,11 @@
 
         private void SaveItem(ReferenceItemViewModel itemViewModel)
         {
+            if (SelectedItem is null)
+            {
+                MessageBox.Show("Nothing Selected!");
+                return;
+            }
             var item = itemViewModel.ReferenceModel;
             dataProvider.Save(item);
 
