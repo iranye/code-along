@@ -10,6 +10,7 @@
             CoffeeOrder = new CoffeeOrder();
             ClearOrderCommand = new DelegateCommand(ClearOrder);
             AddCommand = new DelegateCommand(AddBeverage);
+            RemoveCommand = new DelegateCommand(RemoveBeverage, CanRemoveBeverage);
 
             // populate beverage types
             BeverageTypes = new List<KeyValuePair<string, Func<Beverage>>>
@@ -17,6 +18,7 @@
                 new KeyValuePair<string, Func<Beverage>>("Espresso", () => new Espresso()),
                 new KeyValuePair<string, Func<Beverage>>("House Blend", () => new HouseBlend()),
                 new KeyValuePair<string, Func<Beverage>>("Dark Roast", () => new DarkRoast()),
+                new KeyValuePair<string, Func<Beverage>>("Latte", () => new Latte()),
             };
 
             Sizes = new List<Size> { Size.Small, Size.Medium, Size.Large };
@@ -26,11 +28,9 @@
 
         public DelegateCommand AddCommand { get; }
 
-        public DelegateCommand DeleteCommand { get; }
-
-        public DelegateCommand SaveCommand { get; set; }
-
         public DelegateCommand ClearOrderCommand { get; set; }
+
+        public DelegateCommand RemoveCommand { get; set; }
 
         public List<KeyValuePair<string, Func<Beverage>>> BeverageTypes { get; }
 
@@ -66,6 +66,18 @@
 
         public CoffeeOrder CoffeeOrder { get; set; }
 
+        private Beverage? selectedBeverage;
+        public Beverage? SelectedBeverage
+        {
+            get => selectedBeverage;
+            set
+            {
+                selectedBeverage = value;
+                RaisePropertyChanged();
+                RemoveCommand?.RaiseCanExecuteChanged();
+            }
+        }
+
         private void AddBeverage(object? parameter)
         {
             // create base beverage
@@ -93,7 +105,23 @@
         private async void ClearOrder(object? parameter)
         {
             CoffeeOrder.Beverages.Clear();
+            SelectedBeverage = null;
             RaisePropertyChanged(nameof(CoffeeOrder));
+        }
+
+        private void RemoveBeverage(object? parameter)
+        {
+            if (SelectedBeverage != null)
+            {
+                CoffeeOrder.Beverages.Remove(SelectedBeverage);
+                SelectedBeverage = null;
+                RaisePropertyChanged(nameof(CoffeeOrder));
+            }
+        }
+
+        private bool CanRemoveBeverage(object? parameter)
+        {
+            return SelectedBeverage != null;
         }
 
         private string title = "Decorator Pattern - SEE page 135/97";

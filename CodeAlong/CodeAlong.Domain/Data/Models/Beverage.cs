@@ -80,5 +80,24 @@
             };
         }
     }
+
+    public class Latte : Beverage
+    {
+        public Latte()
+        {
+            Description = "Latte";
+        }
+
+        public override double Cost()
+        {
+            return Size switch
+            {
+                Size.Small => 2.00,
+                Size.Medium => 4.00,
+                Size.Large => 5.00,
+                _ => 4.00
+            };
+        }
+    }
 }
 
