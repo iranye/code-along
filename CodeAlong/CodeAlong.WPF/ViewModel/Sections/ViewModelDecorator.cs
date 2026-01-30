@@ -66,6 +66,8 @@
 
         public CoffeeOrder CoffeeOrder { get; set; }
 
+        public double OrderTotal => CoffeeOrder.Beverages.Sum(b => b.Cost());
+
         private Beverage? selectedBeverage;
         public Beverage? SelectedBeverage
         {
@@ -100,6 +102,7 @@
             beverage.SetSize(SelectedSize);
             CoffeeOrder.Beverages.Add(beverage);
             RaisePropertyChanged(nameof(CoffeeOrder));
+            RaisePropertyChanged(nameof(OrderTotal));
         }
 
         private async void ClearOrder(object? parameter)
@@ -107,6 +110,7 @@
             CoffeeOrder.Beverages.Clear();
             SelectedBeverage = null;
             RaisePropertyChanged(nameof(CoffeeOrder));
+            RaisePropertyChanged(nameof(OrderTotal));
         }
 
         private void RemoveBeverage(object? parameter)
@@ -116,6 +120,7 @@
                 CoffeeOrder.Beverages.Remove(SelectedBeverage);
                 SelectedBeverage = null;
                 RaisePropertyChanged(nameof(CoffeeOrder));
+                RaisePropertyChanged(nameof(OrderTotal));
             }
         }
 
