@@ -281,7 +281,9 @@
         {
             if (SelectedDuck != null)
             {
-                // TODO: Add logic to determine whether a behavior is actually changing
+                bool flyBehaviorChanged = false;
+                bool quackBehaviorChanged = false;
+
                 // Determine new fly behavior
                 IFlyBehavior newFlyBehavior = EditFlyWithWings ? new FlyWithWings() :
                                               EditFlyNoWay ? new FlyNoWay() :
@@ -292,13 +294,30 @@
                                                   EditQuackMute ? new QuackMute() :
                                                   new QuackSqueak();
 
-                // Update the behaviors
-                SelectedDuck.FlyBehavior = newFlyBehavior;
-                SelectedDuck.QuackBehavior = newQuackBehavior;
+                // Check if fly behavior is changing
+                if (SelectedDuck.FlyBehavior.GetType() != newFlyBehavior.GetType())
+                {
+                    SelectedDuck.FlyBehavior = newFlyBehavior;
+                    flyBehaviorChanged = true;
+                }
+
+                // Check if quack behavior is changing
+                if (SelectedDuck.QuackBehavior.GetType() != newQuackBehavior.GetType())
+                {
+                    SelectedDuck.QuackBehavior = newQuackBehavior;
+                    quackBehaviorChanged = true;
+                }
                 
-                // Notify property changes to update the display
-                SelectedDuck.OnPropertyChanged(nameof(SelectedDuck.FlyInfo));
-                SelectedDuck.OnPropertyChanged(nameof(SelectedDuck.QuackInfo));
+                // Notify property changes only if behaviors actually changed
+                if (flyBehaviorChanged)
+                {
+                    SelectedDuck.OnPropertyChanged(nameof(SelectedDuck.FlyInfo));
+                }
+
+                if (quackBehaviorChanged)
+                {
+                    SelectedDuck.OnPropertyChanged(nameof(SelectedDuck.QuackInfo));
+                }
             }
         }
 
