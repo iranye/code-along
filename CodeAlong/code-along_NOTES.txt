@@ -1,5 +1,5 @@
 
-+-- For WPF APP --+
++----- For WPF APP -----+
 expand reference title, descr section to support Adding of Sections (List of SectionViewModel)
 consider factory pattern to resolve customizable section info, i.e., to support different UIs for different sections: Decorator, Singleton etc.
 
@@ -11,5 +11,7 @@ Next Up:
   Correlate ViewModel.Sections (e.g., DecoratorViewModel, FactoryPatternViewModel) with ReferenceItemViewModelItem (e.g., Head First DP)
 
   
-  
-  
++-- PROMPTS --+
+update ListBox on line 46 and ViewModelDecorator class add a button to remove Beverage from order
+
+implement a view similar to DecoratorView to create an order for different types of ducks (see Duck.cs and ViewModelStrategyPattern.cs)
