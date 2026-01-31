@@ -15,7 +15,7 @@
             <Label HorizontalAlignment="Left" Width="100">Title:</Label>
             <TextBox Width="500" Text="{Binding Title, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Name="Title"/>
 
-            <GroupBox Header="Create Duck Order" Margin="0,10,0,0">
+            <GroupBox Header="Add Duck" Margin="0,10,0,0">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5">
                         <ComboBox Width="150" ItemsSource="{Binding DuckTypes}" SelectedItem="{Binding SelectedDuckType}" DisplayMemberPath="Key"/>
@@ -70,6 +70,30 @@
                         <Label Content="Total Ducks:" FontWeight="Bold" FontSize="14"/>
                         <TextBlock Text="{Binding DuckCount}" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
                     </StackPanel>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Edit Duck" Margin="0,10,0,0" Visibility="{Binding EditDuckVisibility}">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <StackPanel Margin="0,0,20,0">
+                            <Label>Change Fly Behavior</Label>
+                            <RadioButton Content="Fly with Wings" GroupName="EditFlyBehavior" IsChecked="{Binding EditFlyWithWings}"/>
+                            <RadioButton Content="Cannot Fly" GroupName="EditFlyBehavior" IsChecked="{Binding EditFlyNoWay}"/>
+                            <RadioButton Content="Rocket Powered" GroupName="EditFlyBehavior" IsChecked="{Binding EditFlyRocketPowered}"/>
+                        </StackPanel>
+                        <StackPanel>
+                            <Label>Change Quack Behavior</Label>
+                            <RadioButton Content="Normal Quack" GroupName="EditQuackBehavior" IsChecked="{Binding EditQuackDefault}"/>
+                            <RadioButton Content="Mute" GroupName="EditQuackBehavior" IsChecked="{Binding EditQuackMute}"/>
+                            <RadioButton Content="Squeak" GroupName="EditQuackBehavior" IsChecked="{Binding EditQuackSqueak}"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <Button Content="Update Behaviors" 
+                            Command="{Binding UpdateBehaviorsCommand}" 
+                            Margin="5"
+                            Width="150"
+                            HorizontalAlignment="Left"/>
                 </StackPanel>
             </GroupBox>
         </StackPanel>

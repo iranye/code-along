@@ -11,6 +11,7 @@
             ClearOrderCommand = new DelegateCommand(ClearOrder);
             AddCommand = new DelegateCommand(AddDuck);
             RemoveCommand = new DelegateCommand(RemoveDuck, CanRemoveDuck);
+            UpdateBehaviorsCommand = new DelegateCommand(UpdateBehaviors, CanUpdateBehaviors);
 
             // populate duck types
             DuckTypes = new List<KeyValuePair<string, Func<Duck>>>
@@ -31,6 +32,8 @@
         public DelegateCommand ClearOrderCommand { get; set; }
 
         public DelegateCommand RemoveCommand { get; set; }
+
+        public DelegateCommand UpdateBehaviorsCommand { get; set; }
 
         public List<KeyValuePair<string, Func<Duck>>> DuckTypes { get; }
 
@@ -125,7 +128,21 @@
             {
                 selectedDuck = value;
                 RaisePropertyChanged();
+                RaisePropertyChanged(nameof(EditDuckVisibility));
                 RemoveCommand?.RaiseCanExecuteChanged();
+                UpdateBehaviorsCommand?.RaiseCanExecuteChanged();
+                
+                // Initialize edit radio buttons when duck is selected
+                if (selectedDuck != null)
+                {
+                    EditFlyWithWings = selectedDuck.FlyBehavior is FlyWithWings;
+                    EditFlyNoWay = selectedDuck.FlyBehavior is FlyNoWay;
+                    EditFlyRocketPowered = selectedDuck.FlyBehavior is FlyRocketPowered;
+                    
+                    EditQuackDefault = selectedDuck.QuackBehavior is QuackDefault;
+                    EditQuackMute = selectedDuck.QuackBehavior is QuackMute;
+                    EditQuackSqueak = selectedDuck.QuackBehavior is QuackSqueak;
+                }
             }
         }
 
@@ -186,6 +203,108 @@
                 title = value;
                 RaisePropertyChanged();
             }
+        }
+
+        // Edit Duck Visibility
+        public System.Windows.Visibility EditDuckVisibility => 
+            SelectedDuck != null ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed;
+
+        // Edit Fly Behavior Radio Buttons
+        private bool editFlyWithWings;
+        public bool EditFlyWithWings
+        {
+            get => editFlyWithWings;
+            set
+            {
+                editFlyWithWings = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private bool editFlyNoWay;
+        public bool EditFlyNoWay
+        {
+            get => editFlyNoWay;
+            set
+            {
+                editFlyNoWay = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private bool editFlyRocketPowered;
+        public bool EditFlyRocketPowered
+        {
+            get => editFlyRocketPowered;
+            set
+            {
+                editFlyRocketPowered = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        // Edit Quack Behavior Radio Buttons
+        private bool editQuackDefault;
+        public bool EditQuackDefault
+        {
+            get => editQuackDefault;
+            set
+            {
+                editQuackDefault = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private bool editQuackMute;
+        public bool EditQuackMute
+        {
+            get => editQuackMute;
+            set
+            {
+                editQuackMute = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private bool editQuackSqueak;
+        public bool EditQuackSqueak
+        {
+            get => editQuackSqueak;
+            set
+            {
+                editQuackSqueak = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private void UpdateBehaviors(object? parameter)
+        {
+            if (SelectedDuck != null)
+            {
+                // TODO: Add logic to determine whether a behavior is actually changing
+                // Determine new fly behavior
+                IFlyBehavior newFlyBehavior = EditFlyWithWings ? new FlyWithWings() :
+                                              EditFlyNoWay ? new FlyNoWay() :
+                                              new FlyRocketPowered();
+
+                // Determine new quack behavior
+                IQuackBehavior newQuackBehavior = EditQuackDefault ? new QuackDefault() :
+                                                  EditQuackMute ? new QuackMute() :
+                                                  new QuackSqueak();
+
+                // Update the behaviors
+                SelectedDuck.FlyBehavior = newFlyBehavior;
+                SelectedDuck.QuackBehavior = newQuackBehavior;
+                
+                // Notify property changes to update the display
+                SelectedDuck.OnPropertyChanged(nameof(SelectedDuck.FlyInfo));
+                SelectedDuck.OnPropertyChanged(nameof(SelectedDuck.QuackInfo));
+            }
+        }
+
+        private bool CanUpdateBehaviors(object? parameter)
+        {
+            return SelectedDuck != null;
         }
     }
 }

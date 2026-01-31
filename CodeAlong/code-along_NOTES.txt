@@ -4,14 +4,22 @@ expand reference title, descr section to support Adding of Sections (List of Sec
 consider factory pattern to resolve customizable section info, i.e., to support different UIs for different sections: Decorator, Singleton etc.
 
 Next Up:
+  Change Selected/Not Selected styling on Section buttons
+
   Refactors/Renames:
     Consider including a Template Tab with generic controls and use when adding new References/Books
     ReferencesView/ReferencesViewModel => HeadFirstView/HeadFirst_ReferenceViewModel
-  Write a prompt to add a new section (which generates a new View + ViewModel, e.g., for Singleton pattern)
   Correlate ViewModel.Sections (e.g., DecoratorViewModel, FactoryPatternViewModel) with ReferenceItemViewModelItem (e.g., Head First DP)
+  
+  Re-visit implemntations and refactor (e.g., use Factory Pattern to support adding and using a new Duck Type and or IFlyBehavior or IQuackBehavior dynamically in StrategyPattern UI)
 
   
 +-- PROMPTS --+
+add a new section (which generates a new View + ViewModel, e.g., for Singleton pattern)
+
 update ListBox on line 46 and ViewModelDecorator class add a button to remove Beverage from order
 
 implement a view similar to DecoratorView to create an order for different types of ducks (see Duck.cs and ViewModelStrategyPattern.cs)
+
+add another GroupBox for Edit Duck visible when SelectedDuck is not null that lets user change fly and quack behaviors via Duck methods: SetFlyBehavior, SetQuackBehavior
+
