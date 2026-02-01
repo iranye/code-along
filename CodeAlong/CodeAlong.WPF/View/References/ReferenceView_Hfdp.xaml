@@ -16,6 +16,9 @@
         <DataTemplate DataType="{x:Type vmsections:ViewModelStrategyPattern}">
             <viewsections:StrategyPatternView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vmsections:ViewModelObserverPattern}">
+            <viewsections:ObserverPatternView/>
+        </DataTemplate>
         <DataTemplate DataType="{x:Type vmsections:ViewModelDecorator}">
             <viewsections:DecoratorView/>
         </DataTemplate>
@@ -85,6 +88,11 @@
                             Name="ButtonSectionStrategy" HorizontalContentAlignment="Left" Padding="10,0,0,0"
                             Command="{Binding SelectSectionCommand}"
                             CommandParameter="{Binding StrategyPattern}">1. _Strategy Pattern</Button>
+                    <Button Width="210" Margin="0 10 0 0" FontSize="20"
+                            Click="ButtonSection_Click" 
+                            Name="ButtonSectionObserver" HorizontalContentAlignment="Left" Padding="10,0,0,0"
+                            Command="{Binding SelectSectionCommand}"
+                            CommandParameter="{Binding ObserverPattern}">2. Obse_rver Pattern</Button>
                     <Button Width="210" Margin="0 10 0 0" FontSize="20"
                             Click="ButtonSection_Click" 
                             Name="ButtonSectionDecorator" HorizontalContentAlignment="Left" Padding="10,0,0,0"

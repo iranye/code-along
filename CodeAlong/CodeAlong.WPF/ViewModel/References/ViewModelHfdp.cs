@@ -16,6 +16,7 @@
 
         public ViewModelHfdp(IDataProvider dataProvider,
             ViewModelDecorator viewModelDecorator,
+            ViewModelObserverPattern viewModelObserver,
             ViewModelFactoryPattern factoryViewModel,
             ViewModelStrategyPattern strategyViewModel)
         {
@@ -24,6 +25,7 @@
 
             StrategyPattern = strategyViewModel;
             DecoratorPattern = viewModelDecorator;
+            ObserverPattern = viewModelObserver;
             FactoryPattern = factoryViewModel;
             SelectedViewModel = strategyViewModel;
             AddCommand = new DelegateCommand(Add);
@@ -52,6 +54,8 @@
         public ViewModelStrategyPattern StrategyPattern { get; }
 
         public ViewModelDecorator DecoratorPattern { get; }
+
+        public ViewModelObserverPattern ObserverPattern { get; }
 
         public ViewModelFactoryPattern FactoryPattern { get; }
 

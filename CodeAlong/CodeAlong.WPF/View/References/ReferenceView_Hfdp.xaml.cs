@@ -43,12 +43,16 @@
         {
             ResetButtonStyles();
             var btn = sender as Button;
-            btn.Style = styleSelected;
+            if (btn != null)
+            {
+                btn.Style = styleSelected;
+            }
         }
 
         private void ResetButtonStyles()
         {
             ButtonSectionStrategy.Style = styleUnSelected;
+            ButtonSectionObserver.Style = styleUnSelected;
             ButtonSectionDecorator.Style = styleUnSelected;
             ButtonSectionFactory.Style = styleUnSelected;
         }

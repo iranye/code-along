@@ -27,5 +27,4 @@ update ListBox on line 46 and ViewModelDecorator class add a button to remove Be
 
 implement a view similar to DecoratorView to create an order for different types of ducks (see Duck.cs and ViewModelStrategyPattern.cs)
 
-add another GroupBox for Edit Duck visible when SelectedDuck is not null that lets user change fly and quack behaviors via Duck methods: SetFlyBehavior, SetQuackBehavior
-
+Add another section for Observer, following the pattern of ViewModelFactoryPattern which is paired with FactoryPatternView.xaml
