@@ -8,15 +8,26 @@
 
     public partial class ReferenceView_Hfdp : UserControl
     {
-        public ViewModelHfdp? ViewModel
-        {
-            get => DataContext as ViewModelHfdp;
-            set => DataContext = value;
-        }
+        private Style styleSelected;
+        private Style styleUnSelected;
 
         public ReferenceView_Hfdp()
         {
             InitializeComponent();
+            styleSelected ??= (Style)FindResource("ButtonSelected");
+            styleUnSelected ??= (Style)FindResource("ButtonUnSelected");
+            Loaded += ReferenceView_Hfdp_Loaded;
+        }
+
+        private void ReferenceView_Hfdp_Loaded(object sender, RoutedEventArgs e)
+        {
+            ButtonSectionStrategy.Style = styleSelected;
+        }
+
+        public ViewModelHfdp? ViewModel
+        {
+            get => DataContext as ViewModelHfdp;
+            set => DataContext = value;
         }
 
         void MainItem_KeyDown(object sender, KeyEventArgs e)
@@ -26,6 +37,20 @@
                 // ViewModel?.SaveSelectedVolume();
                 e.Handled = true;
             }
+        }
+
+        private void ButtonSection_Click(object sender, RoutedEventArgs e)
+        {
+            ResetButtonStyles();
+            var btn = sender as Button;
+            btn.Style = styleSelected;
+        }
+
+        private void ResetButtonStyles()
+        {
+            ButtonSectionStrategy.Style = styleUnSelected;
+            ButtonSectionDecorator.Style = styleUnSelected;
+            ButtonSectionFactory.Style = styleUnSelected;
         }
 
         private void ViewJson_Click(object sender, RoutedEventArgs e)

@@ -25,7 +25,7 @@
             StrategyPattern = strategyViewModel;
             DecoratorPattern = viewModelDecorator;
             FactoryPattern = factoryViewModel;
-            SelectedViewModel = viewModelDecorator;
+            SelectedViewModel = strategyViewModel;
             AddCommand = new DelegateCommand(Add);
             DeleteCommand = new DelegateCommand(Delete, CanDelete);
             SaveCommand = new DelegateCommand(Save);

@@ -13,7 +13,13 @@ Next Up:
   
   Re-visit implemntations and refactor (e.g., use Factory Pattern to support adding and using a new Duck Type and or IFlyBehavior or IQuackBehavior dynamically in StrategyPattern UI)
 
-  
++-- Strategy Pattern --+
+  Move DuckOrder and DuckOrderItem to WPF project
+  DuckOrder => ViewModelDuckOrder
+  DuckOrderItem => ItemViewModelDuck
+  ItemViewModelDuck has a Model Duck (instead of string DuckType)
+
+
 +-- PROMPTS --+
 add a new section (which generates a new View + ViewModel, e.g., for Singleton pattern)
 
