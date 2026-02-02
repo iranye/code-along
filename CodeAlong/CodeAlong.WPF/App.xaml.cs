@@ -1,6 +1,7 @@
 ﻿namespace CodeAlong.WPF
 {
     using CodeAlong.Domain.Data;
+    using CodeAlong.Domain.Data.Models;
     using CodeAlong.WPF.ViewModel;
     using CodeAlong.WPF.ViewModel.References;
     using CodeAlong.WPF.ViewModel.Sections;
@@ -40,6 +41,8 @@
             services.AddTransient<ViewModelObserverPattern>();
             services.AddTransient<ViewModelDecorator>();
             services.AddTransient<ViewModelFactoryPattern>();
+
+            services.AddTransient<ISubject, WeatherData>();
 
             services.AddTransient<IDataProvider, DataProvider>();
             // services.AddAutoMapper(Assembly.GetExecutingAssembly());
