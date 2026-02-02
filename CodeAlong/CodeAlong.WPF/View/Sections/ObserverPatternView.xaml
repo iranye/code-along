@@ -9,11 +9,38 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel HorizontalAlignment="Left" Margin="10">
+        
+        <StackPanel Grid.Row="0" HorizontalAlignment="Left" Margin="10">
             <Label HorizontalAlignment="Left" Width="100">Title:</Label>
             <TextBox Width="500" Text="{Binding Title, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Name="Title"/>
-        </StackPanel>            
+        </StackPanel>
+
+        <GroupBox Grid.Row="1" Header="Weather Measurements" Margin="10" Padding="10">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <Label Width="100">Temperature (°C):</Label>
+                    <TextBox Width="200" Text="{Binding Temperature, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <Label Width="100">Humidity (%):</Label>
+                    <TextBox Width="200" Text="{Binding Humidity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <Label Width="100">Pressure:</Label>
+                    <TextBox Width="200" Text="{Binding Pressure, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <Button Command="{Binding UpdateMeasurementsCommand}" Content="Update Measurements" Width="150" Margin="0,10" HorizontalAlignment="Left"/>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Row="2" Header="Weather Display" Margin="10" Padding="10">
+            <StackPanel>
+                <TextBlock Text="{Binding WeatherConditions.Display}" FontSize="14" Margin="5"/>
+            </StackPanel>
+        </GroupBox>
     </Grid>
 </UserControl>

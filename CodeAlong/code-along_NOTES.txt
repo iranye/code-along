@@ -4,7 +4,7 @@ expand reference title, descr section to support Adding of Sections (List of Sec
 consider factory pattern to resolve customizable section info, i.e., to support different UIs for different sections: Decorator, Singleton etc.
 
 Next Up:
-  Change Selected/Not Selected styling on Section buttons
+  Save or Display JSON data of model(s)
 
   Refactors/Renames:
     Consider including a Template Tab with generic controls and use when adding new References/Books
@@ -14,10 +14,11 @@ Next Up:
   Re-visit implemntations and refactor (e.g., use Factory Pattern to support adding and using a new Duck Type and or IFlyBehavior or IQuackBehavior dynamically in StrategyPattern UI)
 
 +-- Strategy Pattern --+
-  Move DuckOrder and DuckOrderItem to WPF project
-  DuckOrder => ViewModelDuckOrder
-  DuckOrderItem => ItemViewModelDuck
-  ItemViewModelDuck has a Model Duck (instead of string DuckType)
+  Refactor Model(s) (With idea to eventually to propogate to DB):
+    Move DuckOrder and DuckOrderItem to WPF project
+    DuckOrder => ViewModelDuckOrder
+    DuckOrderItem => ItemViewModelDuck
+    ItemViewModelDuck has a Model Duck (instead of string DuckType)
 
 
 +-- PROMPTS --+
@@ -28,3 +29,5 @@ update ListBox on line 46 and ViewModelDecorator class add a button to remove Be
 implement a view similar to DecoratorView to create an order for different types of ducks (see Duck.cs and ViewModelStrategyPattern.cs)
 
 Add another section for Observer, following the pattern of ViewModelFactoryPattern which is paired with FactoryPatternView.xaml
+
+implement an interface to update weather metics by calling SetMeasurements method in WeatherData and leveraging ViewModelWeatherConditions class from within ViewModelObserverPattern

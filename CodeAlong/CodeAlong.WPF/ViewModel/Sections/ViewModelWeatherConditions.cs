@@ -1,6 +1,5 @@
 ﻿using CodeAlong.WPF.Services;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using WpfLibrary;
 
 namespace CodeAlong.WPF.ViewModel.Sections
 {
@@ -10,7 +9,7 @@ namespace CodeAlong.WPF.ViewModel.Sections
         string Display { get; }
     }
 
-    public class ViewModelWeatherConditions : IObserver, INotifyPropertyChanged, IDisplay
+    public class ViewModelWeatherConditions : ViewModelBase, IObserver, IDisplay
     {
         private float temperature;
         private float humidity;
@@ -18,7 +17,7 @@ namespace CodeAlong.WPF.ViewModel.Sections
 
         public ViewModelWeatherConditions(ISubject subject)
         {
-            this.weatherData = weatherData;
+            this.weatherData = subject;
             this.weatherData.Attach(this);
         }
 
@@ -38,13 +37,6 @@ namespace CodeAlong.WPF.ViewModel.Sections
                 display = value;
                 RaisePropertyChanged();
             }
-        }
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        protected virtual void RaisePropertyChanged([CallerMemberName] string? propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
