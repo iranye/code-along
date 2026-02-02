@@ -1,5 +1,10 @@
-﻿namespace CodeAlong.Domain.Data.Models
+﻿namespace CodeAlong.WPF.Services
 {
+    public interface IObserver
+    {
+        void Update(float temp, float humidity, float pressure);
+    }
+
     public interface ISubject
     {
         void Attach(IObserver observer);

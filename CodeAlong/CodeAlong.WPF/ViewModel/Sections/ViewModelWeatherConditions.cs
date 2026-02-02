@@ -1,26 +1,50 @@
-﻿using CodeAlong.Domain.Data.Models;
-using WpfLibrary;
+﻿using CodeAlong.WPF.Services;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace CodeAlong.WPF.ViewModel.Sections
 {
-    public class ViewModelWeatherConditions : ViewModelBase
+    public interface IDisplay
     {
-        private readonly CurrentConditionsDisplay currentConditionsDisplay;
+        // void Display();
+        string Display { get; }
+    }
+
+    public class ViewModelWeatherConditions : IObserver, INotifyPropertyChanged, IDisplay
+    {
+        private float temperature;
+        private float humidity;
+        private readonly ISubject weatherData;
 
         public ViewModelWeatherConditions(ISubject subject)
         {
-            this.currentConditionsDisplay = new CurrentConditionsDisplay(subject);
+            this.weatherData = weatherData;
+            this.weatherData.Attach(this);
         }
 
-        private float temperature;
-        public float Temperature
+        public void Update(float temp, float humidity, float pressure)
         {
-            get => temperature;
+            this.temperature = temp;
+            this.humidity = humidity;
+            Display = $"Current conditions: {temperature}°C and {humidity}% humidity";
+        }
+
+        private string display = string.Empty;
+        public string Display
+        {
+            get => display;
             set
             {
-                temperature = value;
+                display = value;
                 RaisePropertyChanged();
             }
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected virtual void RaisePropertyChanged([CallerMemberName] string? propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
