@@ -21,6 +21,7 @@
 
         private void ReferenceView_Hfdp_Loaded(object sender, RoutedEventArgs e)
         {
+            ResetButtonStyles();
             ButtonSectionStrategy.Style = styleSelected;
         }
 

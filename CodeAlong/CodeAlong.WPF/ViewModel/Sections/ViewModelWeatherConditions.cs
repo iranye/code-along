@@ -14,11 +14,25 @@ namespace CodeAlong.WPF.ViewModel.Sections
         private float temperature;
         private float humidity;
         private readonly ISubject weatherData;
+        private readonly string displayName;
 
-        public ViewModelWeatherConditions(ISubject subject)
+        public ViewModelWeatherConditions(ISubject subject, string name = "Weather Display")
         {
             this.weatherData = subject;
+            this.displayName = name;
             this.weatherData.Attach(this);
+            IsAttached = true;
+        }
+
+        public string DisplayName => displayName;
+
+        public string DisplayInfo
+        {
+            get
+            {
+                var attachedStatus = IsAttached ? "Attached" : "Not Attached";
+                return $"{displayName} - {attachedStatus}";                
+            }
         }
 
         public void Update(float temp, float humidity, float pressure)
@@ -36,6 +50,18 @@ namespace CodeAlong.WPF.ViewModel.Sections
             {
                 display = value;
                 RaisePropertyChanged();
+            }
+        }
+
+        private bool isAttached;
+        public bool IsAttached
+        {
+            get => isAttached;
+            set
+            {
+                isAttached = value;
+                RaisePropertyChanged();
+                RaisePropertyChanged("DisplayInfo");
             }
         }
     }
