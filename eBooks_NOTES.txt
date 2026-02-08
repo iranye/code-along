@@ -110,15 +110,15 @@ One of the standout features of .NET Aspire is its ability to simplify microserv
 orchestration. 
 
 +-- Pick Up at --+
-	[p24] Service discovery in .NET Aspire
-			Involves:
-				- Service registration
-				- Service querying
-				- Dynamic updates: Allows services to join or leave the network without disruptions.
-				- Load balancing
+	[p027] - Chapter 02
 
-
-	[p006] - Chapter 01 - Getting Started
+		[p24] Service discovery in .NET Aspire - Supported via ServiceDefaults project + NuGet:Microsoft.Extensions.ServiceDiscovery
+				Involves:
+					- Service registration
+					- Service querying
+					- Dynamic updates: Allows services to join or leave the network without disruptions.
+					- Load balancing
+				In the Web Client project, we use SD using a dynamic URL: client.BaseAddress = new("https+http://apiservice");
 
 	
 	[p27] - Chapter 02 - Managing Infrastructure Components With Containers and Integrations
