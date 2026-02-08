@@ -10,12 +10,17 @@ namespace CodeAlong.WPF
     {
         private readonly MainViewModel viewModel;
 
+        private Style styleSelected;
+        private Style styleUnSelected;
+
         public MainWindow(MainViewModel mainViewModel)
         {
             InitializeComponent();
             viewModel = mainViewModel;
             DataContext = viewModel;
             Loaded += MainWindow_Loaded;
+            styleSelected ??= (Style)FindResource("ButtonSelected");
+            styleUnSelected ??= (Style)FindResource("ButtonUnSelected");
         }
 
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -26,22 +31,14 @@ namespace CodeAlong.WPF
             ButtonTopics.Style = StyleUnSelected;
         }
 
-        private Style styleSelected;
-        private Style styleUnSelected;
-
         private Style StyleSelected
         {
-            get => styleSelected ??= FindResource("ButtonSelected") as Style;
+            get => styleSelected;
         }
 
         private Style StyleUnSelected
         {
-            get => styleUnSelected ??= FindResource("ButtonUnSelected") as Style;
-        }
-
-        public MainWindow()
-        {
-            InitializeComponent();
+            get => styleUnSelected;
         }
 
         private void ButtonReferences_Click(object sender, RoutedEventArgs e)

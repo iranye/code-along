@@ -1,12 +1,13 @@
 ﻿namespace CodeAlong.WPF.ViewModel
 {
+    using CodeAlong.WPF.ViewModel.References;
     using WpfLibrary;
 
     public class MainViewModel : ViewModelBase
     {
         private ViewModelBase? selectedViewModel;
 
-        public MainViewModel(ReferencesViewModel referencesViewModel, TopicsViewModel topicsViewModel)
+        public MainViewModel(ViewModelHfdp referencesViewModel, TopicsViewModel topicsViewModel)
         {
             ReferencesViewModel = referencesViewModel;
             TopicsViewModel = topicsViewModel;
@@ -16,7 +17,7 @@
 
         public DelegateCommand SelectViewModelCommand { get; }
 
-        public ReferencesViewModel ReferencesViewModel { get; }
+        public ViewModelHfdp ReferencesViewModel { get; }
         public TopicsViewModel TopicsViewModel { get; }
 
         public ViewModelBase? SelectedViewModel

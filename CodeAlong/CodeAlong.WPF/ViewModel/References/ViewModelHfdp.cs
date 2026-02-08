@@ -1,4 +1,4 @@
-﻿namespace CodeAlong.WPF.ViewModel
+﻿namespace CodeAlong.WPF.ViewModel.References
 {
     using CodeAlong.Domain.Data;
     using CodeAlong.Domain.Data.Models;
@@ -8,20 +8,26 @@
     using System.Windows;
     using WpfLibrary;
 
-    public class ReferencesViewModel : ViewModelBase
+    public class ViewModelHfdp : ViewModelBase
     {
         private readonly IDataProvider dataProvider;
         private ReferenceItemViewModel? selectedItem;
         private ViewModelBase? selectedViewModel;
 
-        public ReferencesViewModel(IDataProvider dataProvider, DecoratorViewModel decoratorViewModel, FactoryPatternViewModel factoryViewModel)
+        public ViewModelHfdp(IDataProvider dataProvider,
+            ViewModelDecorator viewModelDecorator,
+            ViewModelObserverPattern viewModelObserver,
+            ViewModelFactoryPattern factoryViewModel,
+            ViewModelStrategyPattern strategyViewModel)
         {
             this.dataProvider = dataProvider;
             SelectSectionCommand = new DelegateCommand(SelectViewModel);
 
-            DecoratorPattern = decoratorViewModel;
+            StrategyPattern = strategyViewModel;
+            DecoratorPattern = viewModelDecorator;
+            ObserverPattern = viewModelObserver;
             FactoryPattern = factoryViewModel;
-            SelectedViewModel = decoratorViewModel;
+            SelectedViewModel = strategyViewModel;
             AddCommand = new DelegateCommand(Add);
             DeleteCommand = new DelegateCommand(Delete, CanDelete);
             SaveCommand = new DelegateCommand(Save);
@@ -45,9 +51,13 @@
 
         public DelegateCommand SaveCommand { get; set; }
 
-        public DecoratorViewModel DecoratorPattern { get; }
+        public ViewModelStrategyPattern StrategyPattern { get; }
 
-        public FactoryPatternViewModel FactoryPattern { get; }
+        public ViewModelDecorator DecoratorPattern { get; }
+
+        public ViewModelObserverPattern ObserverPattern { get; }
+
+        public ViewModelFactoryPattern FactoryPattern { get; }
 
         private async void SelectViewModel(object? parameter)
         {
@@ -55,7 +65,7 @@
             await LoadAsync();
         }
 
-        public ObservableCollection<DecoratorViewModel> SectionViewModels { get; } = new();
+        public ObservableCollection<ViewModelDecorator> SectionViewModels { get; } = new();
 
         public ObservableCollection<ReferenceItemViewModel> ItemViewModels { get; } = new();
 
@@ -144,6 +154,11 @@
 
         private void SaveItem(ReferenceItemViewModel itemViewModel)
         {
+            if (SelectedItem is null)
+            {
+                MessageBox.Show("Nothing Selected!");
+                return;
+            }
             var item = itemViewModel.ReferenceModel;
             dataProvider.Save(item);
 

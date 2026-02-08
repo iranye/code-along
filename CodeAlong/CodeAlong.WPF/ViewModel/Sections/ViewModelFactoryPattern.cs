@@ -2,15 +2,15 @@
 {
     using WpfLibrary;
 
-    public class FactoryPatternViewModel : ViewModelBase
+    public class ViewModelFactoryPattern : ViewModelBase
     {
-        public FactoryPatternViewModel()
+        public ViewModelFactoryPattern()
         {
         }
 
-        private string title = "Factory Pattern";
+        private string title = "Factory Pattern - SEE page 160/122";
 
-        public string? Title
+        public string Title
         {
             get => title;
             set

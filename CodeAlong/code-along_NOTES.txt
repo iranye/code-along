@@ -1,17 +1,33 @@
 
-+-- For WPF APP --+
++----- For WPF APP -----+
 expand reference title, descr section to support Adding of Sections (List of SectionViewModel)
 consider factory pattern to resolve customizable section info, i.e., to support different UIs for different sections: Decorator, Singleton etc.
 
 Next Up:
-  Build out different Views for the different References (i.e., each book gets its own View + ViewModel) where each can be accessed via its own tab.
-  Then within each Reference-level ViewModel (e.g., Head First DP), support one or more Section-specific ViewModels (e.g., DecoratorViewModel, FactoryPatternViewModel) where each can be accessed via its own tab/button.
+  Save or Display JSON data of model(s)
+
   Refactors/Renames:
     Consider including a Template Tab with generic controls and use when adding new References/Books
     ReferencesView/ReferencesViewModel => HeadFirstView/HeadFirst_ReferenceViewModel
-  Write a prompt to add a new section (which generates a new View + ViewModel, e.g., for Singleton pattern)
   Correlate ViewModel.Sections (e.g., DecoratorViewModel, FactoryPatternViewModel) with ReferenceItemViewModelItem (e.g., Head First DP)
+  
+  Re-visit implemntations and refactor (e.g., use Factory Pattern to support adding and using a new Duck Type and or IFlyBehavior or IQuackBehavior dynamically in StrategyPattern UI)
 
-  
-  
-  
++-- Strategy Pattern --+
+  Refactor Model(s) (With idea to eventually to propogate to DB):
+    Move DuckOrder and DuckOrderItem to WPF project
+    DuckOrder => ViewModelDuckOrder
+    DuckOrderItem => ItemViewModelDuck
+    ItemViewModelDuck has a Model Duck (instead of string DuckType)
+
+
++-- PROMPTS --+
+add a new section (which generates a new View + ViewModel, e.g., for Singleton pattern)
+
+update ListBox on line 46 and ViewModelDecorator class add a button to remove Beverage from order
+
+implement a view similar to DecoratorView to create an order for different types of ducks (see Duck.cs and ViewModelStrategyPattern.cs)
+
+Add another section for Observer, following the pattern of ViewModelFactoryPattern which is paired with FactoryPatternView.xaml
+
+implement an interface to update weather metics by calling SetMeasurements method in WeatherData and leveraging ViewModelWeatherConditions class from within ViewModelObserverPattern

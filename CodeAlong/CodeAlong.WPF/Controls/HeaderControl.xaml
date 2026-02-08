@@ -7,12 +7,12 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <!-- Header -->
     <Grid Background="{StaticResource HeaderBackgroundBrush}">
-        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-            <Image Source="/Images/logo.png" Width="40" Margin="10 5"/>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Height="55">
+            <Image Source="/Images/logo.png" Width="40" Margin="10 5 10 0"/>
             <TextBlock Text="Code Along" FontSize="30" 
                        Foreground="{StaticResource HeaderForegroundBrush}" VerticalAlignment="Center"/>
             <TextBlock Name="Version" Text="Version 1.0" FontSize="16"
-                       Foreground="#333333" VerticalAlignment="Bottom" Margin="10 0 0 7"/>
+                       Foreground="#333333" VerticalAlignment="Bottom" Margin="10 0 0 10"/>
         </StackPanel>
     </Grid>
 </UserControl>
