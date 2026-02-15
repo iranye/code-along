@@ -1,17 +1,22 @@
 [Title] - [Pickup at...]
 
+[TOC]
 
+---
 # Advanced.MVVM.pdf
 
 Demo app is BubbleBurst (link to source in book no longer valid)
 	Possible Githubs to reference:
 		https://github.com/sweenist/BubbleBurstWPF
 
+
+---
 # ASP.NET_Core_in_Action.pdf
 
 Learn about:
 	Middleware
 
+---
 # Blazor-E-book-ejc-V3.pdf
 
 [p7] Install Android Device Manager + Hyper-V
@@ -19,17 +24,18 @@ Learn about:
 [p16 - Solution Setup] Add Blazor Hybrid project using template [.NET MAUI Blazor App]
 
 
+---
 # Concurrency In C# Cookbook - [p51]
 
 [p23] - Skimmed to the end of Chapter 1
 	Book Recommends using ConfigureAwait(false) within async library methods - [p20]
 	Most I/O tasks use TaskCompletionSource<T> - [p21]
 
-+--RECIPES--------------------------------+
+## RECIPES
 2.3. Reporting Progress [p37]
 
 
-+--DEFINITIONS--------------------------------+
+## DEFINITIONS
 Concurrency: Doing more than one thing at a time
 
 Multithreading: A form of concurrency that uses multiple threads of execution
@@ -42,14 +48,15 @@ Asynchronous Programming: A form of concurrency that uses futures or callbacks t
 
 Reactive Programming: A form of concurrency that's a declarative style of programming where the application reacts to events.
 
+---
 # C++-today.pdf - [p26]
 
 
 
+---
 # Don't-Make-Me-Think-Revisited 
 
-+-- Pick up at --+
-Chapter 09 / pg133
+## Pick up at: Chapter 09 / pg133
 
 		[p45] - Design For Scanning Not Reading
 			Take	advantage	of	conventions
@@ -87,9 +94,11 @@ Chapter 09 / pg133
 	[p127] - Chapter 09 - Usability testing on 10 cents a day
 		[pXXX] - 
 
-# Head_First_Design_Patterns - [NA]
+---
+# Head First Design Patterns 2nd Edition
 
 
+---
 # .NET Aspire Made Easy
 
 dotnetAspireMadeEasy
@@ -122,7 +131,11 @@ orchestration.
 	[p27] - Chapter 02 - Managing Infrastructure Components With Containers and Integrations
 		[pXXX] - 
 
+---
+# Tesla Puzzle Book
+## Logic Puzzles
 
+---
 # Windows_PowerShell_Cookbook_Third_Edition.pdf - [p68]
 
 AUTHOR_CODE HERE:
