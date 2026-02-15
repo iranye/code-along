@@ -134,6 +134,16 @@ orchestration.
 ---
 # Tesla Puzzle Book
 ## Logic Puzzles
+### For consideration, a UI for solving a given logic puzzle having the following entity definitions:
+EntityMain
+EntityTwo
+EntityThree
+EntityFour
+
+#### 1. Within the code, provide the means to map each entity to a specific object (and make persistant)
+
+#### 2. Support a set grid-like controls with T/F control for each cell that gets checked based on given clues and user deduction.
+
 
 ---
 # Windows_PowerShell_Cookbook_Third_Edition.pdf - [p68]
