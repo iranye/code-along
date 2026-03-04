@@ -1,5 +1,7 @@
 namespace LogicSolver.Web
 {
+    using LogicSolver.Web.Services;
+
     public class Program
     {
         public static void Main(string[] args)
@@ -7,6 +9,7 @@ namespace LogicSolver.Web
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddRazorPages();
+            builder.Services.AddTransient<Services.IEmailService, EmailService>();
 
             var app = builder.Build();
 

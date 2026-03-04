@@ -1,4 +1,5 @@
 using LogicSolver.Web.Models;
+using LogicSolver.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -6,8 +7,15 @@ namespace LogicSolver.Web.Pages
 {
     public class ContactModel : PageModel
     {
+        private readonly IEmailService emailService;
+
         public string Title { get; set; } = "Contact Me";
         public string Message { get; set; } = String.Empty;
+
+        public ContactModel(IEmailService emailService)
+        {
+            this.emailService = emailService;
+        }
 
         [BindProperty]
         public ContactViewModel Contact { get; set; } = new();
@@ -27,7 +35,7 @@ namespace LogicSolver.Web.Pages
             if (ModelState.IsValid)
             {
                 var fromEmail = "bob@aol.com";
-                // emailService.SendMail(fromEmail, Contact.Email, Contact.Subject, Contact.Body);
+                emailService.SendMail(fromEmail, Contact.Email, Contact.Subject, Contact.Body);
 
                 ClearData();
                 Message = "Thank you.  Your Message Will Be Sent";
