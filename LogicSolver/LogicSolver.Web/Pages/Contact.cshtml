@@ -4,7 +4,7 @@
     ViewBag.Title = "Contact Page";
 }
 @section header {
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aspnet-client-validation@00.11.1/dist/aspnet-validation.min.js" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aspnet-client-validation@0.11.1/dist/aspnet-validation.min.css" />
 }
 @section Scripts {
     <script src="https://cdn.jsdelivr.net/npm/aspnet-client-validation@0.11.1/dist/aspnet-validation.min.js">
@@ -16,7 +16,7 @@
 }
 <h1>@Model.Title</h1>
 <form method="post">
-    <div asp-validation-summary="All" style="color:red;"></div>
+    <div asp-validation-summary="ModelOnly" style="color:red;"></div>
     <label asp-for="Contact.Name">Name</label>
     <br />
     <input asp-for="Contact.Name" />
