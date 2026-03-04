@@ -7,16 +7,35 @@ namespace LogicSolver.Web.Pages
     public class ContactModel : PageModel
     {
         public string Title { get; set; } = "Contact Me";
-        public string Message { get; set; }
-        public ContactViewModel Contact { get; set; }
+        public string Message { get; set; } = String.Empty;
+
+        [BindProperty]
+        public ContactViewModel Contact { get; set; } = new();
 
         public void OnGet()
         {
         }
 
-        public void OnPost(ContactViewModel model)
+        private void ClearData()
         {
-            Message = "Not Implemented";
+            Contact = new ContactViewModel();
+            ModelState.Clear();
+        }
+
+        public void OnPost()
+        {
+            if (ModelState.IsValid)
+            {
+                var fromEmail = "bob@aol.com";
+                // emailService.SendMail(fromEmail, Contact.Email, Contact.Subject, Contact.Body);
+
+                ClearData();
+                Message = "Thank you.  Your Message Will Be Sent";
+            }
+            else
+            {
+                Message = "Please fix errors";
+            }
         }
     }
 }

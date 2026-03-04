@@ -3,36 +3,50 @@
 @{
     ViewBag.Title = "Contact Page";
 }
+@section header {
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aspnet-client-validation@00.11.1/dist/aspnet-validation.min.js" />
+}
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/aspnet-client-validation@0.11.1/dist/aspnet-validation.min.js">
+    </script>
+    <script defer>
+        const validation = new aspnetValidation.ValidationService();
+        validation.bootstrap();
+    </script>
+}
 <h1>@Model.Title</h1>
 <form method="post">
-    <label for="name">Name</label>
+    <div asp-validation-summary="All" style="color:red;"></div>
+    <label asp-for="Contact.Name">Name</label>
     <br />
-    <input type="text" id="name" name="name" />
-    <br />
-
-    <label for="email">Email</label>
-    <br />
-    <input id="email" type="email" />
+    <input asp-for="Contact.Name" />
+    <span asp-validation-for="Contact.Name"></span>
     <br />
 
-    <label for="subject">Subject</label>
+    <label asp-for="Contact.Email">Email</label>
     <br />
-    <input type="text" id="subject" />
+    <input asp-for="Contact.Email" />
+    <span asp-validation-for="Contact.Email"></span>
     <br />
 
-    <select>
+    <label asp-for="Contact.Subject">Subject</label>
+    <br />
+    <select asp-for="Contact.Subject">
         <option>Work</option>
         <option>Personal</option>
         <option>Proposal</option>
     </select>
-    <br />
+    <span asp-validation-for="Contact.Subject"></span>
 
-    <label for="body">Message</label>
     <br />
-    <textarea rows="4" id="body"></textarea>
+    <label asp-for="Contact.Body">Message</label>
+    <br />
+    <textarea rows="4" asp-for="Contact.Body"></textarea>
+    <span asp-validation-for="Contact.Body"></span>
     <br />
 
     <button type="submit">Send</button>
+    <button>Cancel</button>
 
     <br />
     <div>@Model.Message</div>
