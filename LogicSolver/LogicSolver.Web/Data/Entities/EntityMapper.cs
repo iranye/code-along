@@ -2,14 +2,20 @@
 {
     public class EntityMapper
     {
-        public EntityMain EntityMain { get; set; }
+        public string EntityMainType { get; set; } = string.Empty;
 
-        public EntityMapper(string entityMainTitle, string entity01Title)
+        public string Entity02Type { get; set; } = string.Empty;
+
+        public string Entity03Type { get; set; } = string.Empty;
+
+        public string Entity04Type { get; set; } = string.Empty;
+
+        public EntityMapper(string entityMainType, string entity02Type, string entity03Type, string entity04Type)
         {
-            EntityMain = new EntityMain
-            {
-                Title = entityMainTitle
-            };
+            EntityMainType = entityMainType;
+            Entity02Type = entity02Type;
+            Entity03Type = entity03Type;
+            Entity04Type = entity04Type;
         }
     }
 }

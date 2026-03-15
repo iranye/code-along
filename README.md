@@ -132,17 +132,56 @@ orchestration.
 		[pXXX] - 
 
 ---
-# Tesla Puzzle Book
-## Logic Puzzles
-### For consideration, a UI for solving a given logic puzzle having the following entity definitions:
-EntityMain
-EntityTwo
-EntityThree
-EntityFour
+# Tesla Puzzle Book - _The Nikola Tesla Puzzle Collection: An Electrifying Series of Challenges, Enigmas and Puzzles_
 
-#### 1. Within the code, provide the means to map each entity to a specific object (and make persistant)
+### For consideration, a UI for solving a given logic puzzle to determine the relation among N separate entities (where N is typically 4).
 
-#### 2. Support a set grid-like controls with T/F control for each cell that gets checked based on given clues and user deduction.
+#### 1. Within the UI, provide the means to:
+    A. Give the Type for each Entity
+    B. Give Names to each Entity
+	C. Toggle relations within a grid as each deduction is made.
+	
+
+##### As an example, support:
+    A. EntityMain Type = Professor
+    B. EntityTwo Type = Field
+    C. EntityThree Type = Catastrophe
+    D. EntityFour Type = Solution
+
+
+##### Which will give the headers for the table:
+| Professor    | Field | Catastrophe | Solution |
+| -------- | ------- | ------- | ------- |
+
+#### 2. Then once all names are entered, give the solution grid where each cell can be set to True or False depending on given inputs. For example, one possible solution has:
+| Professor    | Field | Catastrophe | Solution |
+| -------- | ------- | ------- | ------- |
+| Dick Dorkins |Paleontology  |Meteor strike |Live underground |
+| Ty Neilson |Astrophysics |Ice Age | Move to Mars|
+| Hary Stottle |Geology |Alien Invasion |Genetic Mutation |
+| Gary Leo |Marine Biology |Global Flood |Robot servants |
+
+| Field |
+| -------- |
+| Geology |
+| Astrophysics |
+| Paleontology |
+| Marine Biology |
+
+| Catastrophe |
+| -------- |
+| Global Flood |
+| Alien Invasion |
+| Ice Age |
+| Meteor strike |
+
+| Solution |
+| -------- |
+| Genetic Mutation |
+| Robot servants |
+| Live underground |
+| Move to Mars |
+
 
 
 ---
