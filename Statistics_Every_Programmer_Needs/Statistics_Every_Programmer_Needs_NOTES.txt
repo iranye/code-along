@@ -1,0 +1,27 @@
+Gary Sutton
+Statistics_Every_Programmer_Needs
+
++----------------------------------------------------------+--------+--------+--------+
++-- Chapter 02 - Probability and Counting -----------------+--------+--------+--------+
++----------------------------------------------------------+--------+--------+--------+
++-- 2.1 - Probabilities --+
+Theoretical Probabilities: e.g., rolling dice or picking a card
+
+Empirical Probabilities: e.g., derived from trials or real-world observations
+
+Subjective Probabilities: e.g., based on personal judgements or opinions, e.g., winning a chess match becuase they "are feeling confident"
+
+Probability expressed as the ratio of success to total possible outcomes
+Odds expressed as the ratio of successes to failures
+
+
++-- 2.2 - Counting Rules --+
+Multiplication rule (for combined, individual events): e.g., total outcomes from rolling 2 dice = 6 x 6, for license plate with pattern [A-Z][A-Z][A-Z][0-9][0-9][0-9] = 26 x 26 x 26 x 10 x 10 x 10
+
+Addition rule states that the total probability of one or another of the mutually exclusive events occurring is the sum of their individual probalities.
+E.g., choose to read 1 or 12 sci-fi novels or 1 of 14 data science books (but not both), the possible outcomes is 12 + 14
+
+Combinations: when order doesn't matter
+Permutations: when order DOES matter
+
++---FILES---------------------------------------+--------+
