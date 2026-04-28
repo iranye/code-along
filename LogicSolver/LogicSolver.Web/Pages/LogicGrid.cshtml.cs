@@ -10,24 +10,39 @@ namespace LogicSolver.Web.Pages
         public string Title { get; set; } = "Logic Solver Grid";
         public string Message { get; set; } = String.Empty;
 
-        [BindProperty]
-        public EntityMapperViewModel TypeMapper { get; set; } = new();
+        public bool FillInPrimaries { get; set; }
 
-        public EntityMapper EntityMapper { get; set; } = default!;
+        [BindProperty]
+        public EntityTypesViewModel EntityMain { get; set; } = new();
+
+        [BindProperty]
+        public EntityFirstTitles EntityFirstTitles { get; set; } = new();
+
+        // [BindProperty]
+        // public EntityMapperViewModel TypeMapper { get; set; } = new();
+
+        // public EntityMapper EntityMapper { get; set; } = default!;
 
         public void OnPost()
         {
             if (ModelState.IsValid)
             {
+                if (EntityMain.HasDupes)
+                {
+                    Message = "Duplicate values are not allowed.";
+                    return;
+                }
+
+                FillInPrimaries = true;
                 ClearData();
 
-                EntityMapper = new EntityMapper
-                (
-                    TypeMapper.EntityMainType,
-                    TypeMapper.Entity02Type,
-                    TypeMapper.Entity03Type,
-                    TypeMapper.Entity04Type
-                );
+                //EntityMapper = new EntityMapper
+                //(
+                //    TypeMapper.EntityMainType,
+                //    TypeMapper.Entity02Type,
+                //    TypeMapper.Entity03Type,
+                //    TypeMapper.Entity04Type
+                //);
 
                 // EntityMain entityMain = new EntityMain
                 // {
@@ -45,7 +60,6 @@ namespace LogicSolver.Web.Pages
 
         private void ClearData()
         {
-            // Contact = new ContactViewModel();
             ModelState.Clear();
         }
     }

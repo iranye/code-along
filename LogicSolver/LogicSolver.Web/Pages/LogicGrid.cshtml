@@ -3,3 +3,109 @@
 @{
     ViewBag.Title = "Logic Grid Page";
 }
+@section header {
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aspnet-client-validation@0.11.1/dist/aspnet-validation.min.css" />
+}
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/aspnet-client-validation@0.11.1/dist/aspnet-validation.min.js">
+    </script>
+    <script defer>
+        const validation = new aspnetValidation.ValidationService();
+        validation.bootstrap();
+    </script>
+}
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 6px 12px;
+    }
+    .vertical-text {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+    }
+</style>
+
+<form method="post">
+    
+    <div asp-validation-summary="ModelOnly" style="color:red;"></div>
+
+    <label asp-for="EntityMain.EntityFirst">Type (e.g., Professor)</label>
+    <br />
+    <input asp-for="EntityMain.EntityFirst" />
+    <span asp-validation-for="EntityMain.EntityFirst"></span>
+    <br />
+
+    <label asp-for="EntityMain.EntitySecond">Type (e.g., Field)</label>
+    <br />
+    <input asp-for="EntityMain.EntitySecond" />
+    <span asp-validation-for="EntityMain.EntitySecond"></span>
+    <br />
+
+    <label asp-for="EntityMain.EntityThird">Type (e.g., Catastrophe)</label>
+    <br />
+    <input asp-for="EntityMain.EntityThird" />
+    <span asp-validation-for="EntityMain.EntityThird"></span>
+    <br />
+
+    <label asp-for="EntityMain.EntityFourth">Type (e.g., Solution)</label>
+    <br />
+    <input asp-for="EntityMain.EntityFourth" />
+    <span asp-validation-for="EntityMain.EntityFourth"></span>
+    <br />
+    <br />
+    
+    <button type="submit">Send</button>
+    <button>Cancel</button>
+    
+    <br />
+    <br />
+    <div>@Model.Message</div>
+
+</form>
+
+<br />
+<br />
+<br />
+<table>
+    <tbody>
+        <tr>
+            <td></td>
+            <td class="vertical-text">Geology</td>
+            <td class="vertical-text">Astrophysics</td>
+            <td class="vertical-text">Paleontology</td>
+            <td class="vertical-text">Marine Biology</td>
+        </tr>
+        <tr>
+            <td>Dick Dorkins</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Ty Neilson</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Hary Stottle</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Gary Leo</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>

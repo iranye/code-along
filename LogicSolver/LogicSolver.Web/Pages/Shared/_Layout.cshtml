@@ -4,6 +4,11 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Logic Solver - @ViewBag.Title</title>
+    <style>
+        body {
+            background-color: moccasin;
+        }
+    </style>
     @RenderSection("header", false)
 </head>
 <body>
@@ -16,6 +21,7 @@
     <div>
         @RenderBody()
     </div>
+    <br/>
     <footer>&copy; 2026 IraNye</footer>
     @RenderSection("scripts", false)
 </body>
